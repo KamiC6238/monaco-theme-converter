@@ -1,0 +1,24 @@
+{
+  "name": "yuki",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "postinstall": "monaco-treemending",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "1.0.0-beta.21",
+    "@types/node": "^20.8.3",
+    "@types/vscode": "^1.83.0",
+    "eslint": "^8.50.0",
+    "monaco-editor": "^0.43.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vscode": "npm:@codingame/monaco-vscode-api@^1.82.4"
+  }
+}
