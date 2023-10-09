@@ -4,6 +4,21 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: 1.0.0-beta.21
     version: 1.0.0-beta.21(eslint@8.51.0)(typescript@5.0.2)(vitest@0.34.6)
+  '@codingame/monaco-vscode-configuration-service-override':
+    specifier: ^1.82.4
+    version: 1.82.4
+  '@codingame/monaco-vscode-languages-service-override':
+    specifier: ^1.82.4
+    version: 1.82.4
+  '@codingame/monaco-vscode-textmate-service-override':
+    specifier: ^1.82.4
+    version: 1.82.4
+  '@codingame/monaco-vscode-theme-service-override':
+    specifier: ^1.82.4
+    version: 1.82.4
+  '@rollup/plugin-commonjs':
+    specifier: ^25.0.5
+    version: 25.0.5
   '@types/node':
     specifier: ^20.8.3
     version: 20.8.3
@@ -13,9 +28,9 @@ devDependencies:
   eslint:
     specifier: ^8.50.0
     version: 8.51.0
-  monaco-editor:
-    specifier: ^0.43.0
-    version: 0.43.0
+  tiny-monaco:
+    specifier: ^0.0.5
+    version: 0.0.5
   typescript:
     specifier: ^5.0.2
     version: 5.0.2
@@ -25,6 +40,12 @@ devDependencies:
   vscode:
     specifier: npm:@codingame/monaco-vscode-api@^1.82.4
     version: /@codingame/monaco-vscode-api@1.82.4
+  vscode-oniguruma:
+    specifier: ^2.0.1
+    version: 2.0.1
+  vscode-textmate:
+    specifier: ^9.0.0
+    version: 9.0.0
 
 packages:
 
@@ -97,6 +118,36 @@ packages:
     hasBin: true
     dependencies:
       monaco-editor: 0.43.0
+    dev: true
+
+  /@codingame/monaco-vscode-configuration-service-override@1.82.4:
+    resolution: {integrity: sha512-czLqSL8TpFOXlHC0xCZcHkCk7b8pCeFw4nZIgNPqaVxhgwBdhBUXhRlRPZSAigWca9kPmMf9+rIfEgeM9Xmf8w==}
+    dependencies:
+      monaco-editor: 0.43.0
+      vscode: /@codingame/monaco-vscode-api@1.82.4
+    dev: true
+
+  /@codingame/monaco-vscode-languages-service-override@1.82.4:
+    resolution: {integrity: sha512-+UbK0iLL+yOGYodlB9vC09qWzgzGEwqef6rstVSwpf7c86SlH6WOAtrb4s+lfCnyvYkauvmgcElvL+wO89PrxQ==}
+    dependencies:
+      monaco-editor: 0.43.0
+      vscode: /@codingame/monaco-vscode-api@1.82.4
+    dev: true
+
+  /@codingame/monaco-vscode-textmate-service-override@1.82.4:
+    resolution: {integrity: sha512-h/S1S+4ZqY2CcGfmTdIPhYc/2l0OYARWSC/GBnHLSnmOi3R+AgmZCnZtQvest9ZfRBjsu7RWPNiJO5U2O5VM/Q==}
+    dependencies:
+      monaco-editor: 0.43.0
+      vscode: /@codingame/monaco-vscode-api@1.82.4
+      vscode-oniguruma: 2.0.1
+      vscode-textmate: 9.0.0
+    dev: true
+
+  /@codingame/monaco-vscode-theme-service-override@1.82.4:
+    resolution: {integrity: sha512-Clp4aRWF1NNvJftrKbZkn2G5YK2rl7wFEttLHLoZkp7NWIbdmdDvW+Ylg1riE2KZRVD11mGvt5EWvsOyHxYYhA==}
+    dependencies:
+      monaco-editor: 0.43.0
+      vscode: /@codingame/monaco-vscode-api@1.82.4
     dev: true
 
   /@es-joy/jsdoccomment@0.40.1:
@@ -395,6 +446,37 @@ packages:
       fastq: 1.15.0
     dev: true
 
+  /@rollup/plugin-commonjs@25.0.5:
+    resolution: {integrity: sha512-xY8r/A9oisSeSuLCTfhssyDjo9Vp/eDiRLXkg1MXCcEEgEjPmLU+ZyDB20OOD0NlyDa/8SGbK5uIggF5XTx77w==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.5
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      glob: 8.1.0
+      is-reference: 1.2.1
+      magic-string: 0.27.0
+    dev: true
+
+  /@rollup/pluginutils@5.0.5:
+    resolution: {integrity: sha512-6aEYR910NyP73oHiJglti74iRyOwgFU4x3meH/H8OJx6Ry0j6cOVZ5X/wTvub7G7Ao6qaHBEaNsV3GLJkSsF+Q==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@types/estree': 1.0.2
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
+    dev: true
+
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
@@ -450,6 +532,10 @@ packages:
 
   /@types/chai@4.3.6:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
+    dev: true
+
+  /@types/estree@1.0.2:
+    resolution: {integrity: sha512-VeiPZ9MMwXjO32/Xu7+OwflfmeoRwkE/qzndw42gGtgJwZopBnzy2gD//NN1+go1mADzkDcqf/KnFRSjTJ8xJA==}
     dev: true
 
   /@types/json-schema@7.0.13:
@@ -736,6 +822,12 @@ packages:
       concat-map: 0.0.1
     dev: true
 
+  /brace-expansion@2.0.1:
+    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+    dependencies:
+      balanced-match: 1.0.2
+    dev: true
+
   /braces@3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
     engines: {node: '>=8'}
@@ -848,6 +940,10 @@ packages:
   /comment-parser@1.4.0:
     resolution: {integrity: sha512-QLyTNiZ2KDOibvFPlZ6ZngVsZ/0gYnE6uTXi5aoDg8ed3AkJAz4sEje3Y8a29hQ1s6A99MZXe47fLAXQ1rTqaw==}
     engines: {node: '>= 12.0.0'}
+    dev: true
+
+  /commondir@1.0.1:
+    resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
     dev: true
 
   /concat-map@0.0.1:
@@ -1331,6 +1427,10 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
+  /estree-walker@2.0.2:
+    resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+    dev: true
+
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -1453,6 +1553,17 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: true
+
+  /glob@8.1.0:
+    resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 5.1.6
+      once: 1.4.0
     dev: true
 
   /globals@13.23.0:
@@ -1589,6 +1700,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /is-reference@1.2.1:
+    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
+    dependencies:
+      '@types/estree': 1.0.2
+    dev: true
+
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
@@ -1716,6 +1833,13 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /magic-string@0.27.0:
+    resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
   /magic-string@0.30.4:
     resolution: {integrity: sha512-Q/TKtsC5BPm0kGqgBIF9oXAs/xEf2vRKiIB4wCRQTJOQIByZ1d+NnUOotvJOvNpi5RNIgVOMC3pOuaP1ZTDlVg==}
     engines: {node: '>=12'}
@@ -1772,6 +1896,13 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
+  /minimatch@5.1.6:
+    resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /mlly@1.4.2:
     resolution: {integrity: sha512-i/Ykufi2t1EZ6NaPLdfnZk2AX8cs0d+mTzVKuPfqPKPatxLApaBoxJQ9x1/uckXtrS/U5oisPMDkNs0yQTaBRg==}
     dependencies:
@@ -1779,6 +1910,10 @@ packages:
       pathe: 1.1.1
       pkg-types: 1.0.3
       ufo: 1.3.1
+    dev: true
+
+  /monaco-editor@0.41.0:
+    resolution: {integrity: sha512-1o4olnZJsiLmv5pwLEAmzHTE/5geLKQ07BrGxlF4Ri/AXAc2yyDGZwHjiTqD8D/ROKUZmwMA28A+yEowLNOEcA==}
     dev: true
 
   /monaco-editor@0.43.0:
@@ -2199,6 +2334,12 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
+  /tiny-monaco@0.0.5:
+    resolution: {integrity: sha512-3pId1lgYwLl/jpA0Lz3CD/f8GkN7W/hn74F/tOzPd/ONIw5rmCxHGQ/wqgCOTxCF+VVsGm/B+xxtuSUokGxruA==}
+    dependencies:
+      monaco-editor: 0.41.0
+    dev: true
+
   /tinybench@2.5.1:
     resolution: {integrity: sha512-65NKvSuAVDP/n4CqH+a9w2kTlLReS9vhsAP06MWx+/89nMinJyB2icyl58RIcqCmIggpojIGeuJGhjU1aGMBSg==}
     dev: true
@@ -2410,6 +2551,14 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /vscode-oniguruma@2.0.1:
+    resolution: {integrity: sha512-poJU8iHIWnC3vgphJnrLZyI3YdqRlR27xzqDmpPXYzA93R4Gk8z7T6oqDzDoHjoikA2aS82crdXFkjELCdJsjQ==}
+    dev: true
+
+  /vscode-textmate@9.0.0:
+    resolution: {integrity: sha512-Cl65diFGxz7gpwbav10HqiY/eVYTO1sjQpmRmV991Bj7wAoOAjGQ97PpQcXorDE2Uc4hnGWLY17xme+5t6MlSg==}
     dev: true
 
   /vue-eslint-parser@9.3.1(eslint@8.51.0):
