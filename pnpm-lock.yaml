@@ -4,6 +4,9 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: 1.0.0-beta.21
     version: 1.0.0-beta.21(eslint@8.51.0)(typescript@5.0.2)(vitest@0.34.6)
+  '@codingame/monaco-vscode-java-default-extension':
+    specifier: ^1.82.4
+    version: 1.82.4
   '@rollup/plugin-commonjs':
     specifier: ^25.0.5
     version: 25.0.5
@@ -108,6 +111,19 @@ packages:
       monaco-editor: 0.34.0
       vscode-oniguruma: 1.6.2
       vscode-textmate: 7.0.3
+    dev: true
+
+  /@codingame/monaco-vscode-api@1.82.4:
+    resolution: {integrity: sha512-hyqKIlucXSmT2YRgQPdfo6rchDPG8W3S2rSvRtrzQRBdLgbzjPf8p5yEcMDWrry3YQgFvVzPCIs81W7052JeUQ==}
+    hasBin: true
+    dependencies:
+      monaco-editor: 0.43.0
+    dev: true
+
+  /@codingame/monaco-vscode-java-default-extension@1.82.4:
+    resolution: {integrity: sha512-QUIJeXX6b2woZ9knx3zljTLBn+0vMOZlhH2HPn3JE6I/YwVhaQjw2L2BCocBoHWoLKATzTTbmgldGDCFFYEQ+Q==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.4
     dev: true
 
   /@es-joy/jsdoccomment@0.40.1:
@@ -1870,6 +1886,10 @@ packages:
 
   /monaco-editor@0.34.0:
     resolution: {integrity: sha512-VF+S5zG8wxfinLKLrWcl4WUizMx+LeJrG4PM/M78OhcwocpV0jiyhX/pG6Q9jIOhrb/ckYi6nHnaR5OojlOZCQ==}
+    dev: true
+
+  /monaco-editor@0.43.0:
+    resolution: {integrity: sha512-cnoqwQi/9fml2Szamv1XbSJieGJ1Dc8tENVMD26Kcfl7xGQWp7OBKMjlwKVGYFJ3/AXJjSOGvcqK7Ry/j9BM1Q==}
     dev: true
 
   /ms@2.1.2:
