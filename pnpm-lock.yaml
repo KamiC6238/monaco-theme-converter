@@ -4,33 +4,18 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: 1.0.0-beta.21
     version: 1.0.0-beta.21(eslint@8.51.0)(typescript@5.0.2)(vitest@0.34.6)
-  '@codingame/monaco-vscode-configuration-service-override':
-    specifier: ^1.82.4
-    version: 1.82.4
-  '@codingame/monaco-vscode-languages-service-override':
-    specifier: ^1.82.4
-    version: 1.82.4
-  '@codingame/monaco-vscode-textmate-service-override':
-    specifier: ^1.82.4
-    version: 1.82.4
-  '@codingame/monaco-vscode-theme-service-override':
-    specifier: ^1.82.4
-    version: 1.82.4
   '@rollup/plugin-commonjs':
     specifier: ^25.0.5
     version: 25.0.5
   '@types/node':
     specifier: ^20.8.3
     version: 20.8.3
-  '@types/vscode':
-    specifier: ^1.83.0
-    version: 1.83.0
   eslint:
     specifier: ^8.50.0
     version: 8.51.0
-  tiny-monaco:
-    specifier: ^0.0.5
-    version: 0.0.5
+  monaco-editor:
+    specifier: 0.34.0
+    version: 0.34.0
   typescript:
     specifier: ^5.0.2
     version: 5.0.2
@@ -38,14 +23,14 @@ devDependencies:
     specifier: ^4.4.5
     version: 4.4.5(@types/node@20.8.3)
   vscode:
-    specifier: npm:@codingame/monaco-vscode-api@^1.82.4
-    version: /@codingame/monaco-vscode-api@1.82.4
+    specifier: npm:@codingame/monaco-vscode-api@1.69.13
+    version: /@codingame/monaco-vscode-api@1.69.13(monaco-editor@0.34.0)(vscode-oniguruma@1.6.2)(vscode-textmate@7.0.3)
   vscode-oniguruma:
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: 1.6.2
+    version: 1.6.2
   vscode-textmate:
-    specifier: ^9.0.0
-    version: 9.0.0
+    specifier: 7.0.3
+    version: 7.0.3
 
 packages:
 
@@ -113,41 +98,16 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@codingame/monaco-vscode-api@1.82.4:
-    resolution: {integrity: sha512-hyqKIlucXSmT2YRgQPdfo6rchDPG8W3S2rSvRtrzQRBdLgbzjPf8p5yEcMDWrry3YQgFvVzPCIs81W7052JeUQ==}
-    hasBin: true
+  /@codingame/monaco-vscode-api@1.69.13(monaco-editor@0.34.0)(vscode-oniguruma@1.6.2)(vscode-textmate@7.0.3):
+    resolution: {integrity: sha512-7+dQbQ5O8mQhFyUcAiiJkCotNjZUzRxh4NMBKc/BSIFi0jG47bay+jP/+ngsmxHBapjs/xUAPaKSGNnf9WBmAA==}
+    peerDependencies:
+      monaco-editor: ~0.34.0
+      vscode-oniguruma: ^1.6.2
+      vscode-textmate: ^7.0.1
     dependencies:
-      monaco-editor: 0.43.0
-    dev: true
-
-  /@codingame/monaco-vscode-configuration-service-override@1.82.4:
-    resolution: {integrity: sha512-czLqSL8TpFOXlHC0xCZcHkCk7b8pCeFw4nZIgNPqaVxhgwBdhBUXhRlRPZSAigWca9kPmMf9+rIfEgeM9Xmf8w==}
-    dependencies:
-      monaco-editor: 0.43.0
-      vscode: /@codingame/monaco-vscode-api@1.82.4
-    dev: true
-
-  /@codingame/monaco-vscode-languages-service-override@1.82.4:
-    resolution: {integrity: sha512-+UbK0iLL+yOGYodlB9vC09qWzgzGEwqef6rstVSwpf7c86SlH6WOAtrb4s+lfCnyvYkauvmgcElvL+wO89PrxQ==}
-    dependencies:
-      monaco-editor: 0.43.0
-      vscode: /@codingame/monaco-vscode-api@1.82.4
-    dev: true
-
-  /@codingame/monaco-vscode-textmate-service-override@1.82.4:
-    resolution: {integrity: sha512-h/S1S+4ZqY2CcGfmTdIPhYc/2l0OYARWSC/GBnHLSnmOi3R+AgmZCnZtQvest9ZfRBjsu7RWPNiJO5U2O5VM/Q==}
-    dependencies:
-      monaco-editor: 0.43.0
-      vscode: /@codingame/monaco-vscode-api@1.82.4
-      vscode-oniguruma: 2.0.1
-      vscode-textmate: 9.0.0
-    dev: true
-
-  /@codingame/monaco-vscode-theme-service-override@1.82.4:
-    resolution: {integrity: sha512-Clp4aRWF1NNvJftrKbZkn2G5YK2rl7wFEttLHLoZkp7NWIbdmdDvW+Ylg1riE2KZRVD11mGvt5EWvsOyHxYYhA==}
-    dependencies:
-      monaco-editor: 0.43.0
-      vscode: /@codingame/monaco-vscode-api@1.82.4
+      monaco-editor: 0.34.0
+      vscode-oniguruma: 1.6.2
+      vscode-textmate: 7.0.3
     dev: true
 
   /@es-joy/jsdoccomment@0.40.1:
@@ -562,10 +522,6 @@ packages:
 
   /@types/unist@2.0.8:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
-    dev: true
-
-  /@types/vscode@1.83.0:
-    resolution: {integrity: sha512-3mUtHqLAVz9hegut9au4xehuBrzRE3UJiQMpoEHkNl6XHliihO7eATx2BMHs0odsmmrwjJrlixx/Pte6M3ygDQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.7.4(@typescript-eslint/parser@6.7.4)(eslint@8.51.0)(typescript@5.0.2):
@@ -1912,12 +1868,8 @@ packages:
       ufo: 1.3.1
     dev: true
 
-  /monaco-editor@0.41.0:
-    resolution: {integrity: sha512-1o4olnZJsiLmv5pwLEAmzHTE/5geLKQ07BrGxlF4Ri/AXAc2yyDGZwHjiTqD8D/ROKUZmwMA28A+yEowLNOEcA==}
-    dev: true
-
-  /monaco-editor@0.43.0:
-    resolution: {integrity: sha512-cnoqwQi/9fml2Szamv1XbSJieGJ1Dc8tENVMD26Kcfl7xGQWp7OBKMjlwKVGYFJ3/AXJjSOGvcqK7Ry/j9BM1Q==}
+  /monaco-editor@0.34.0:
+    resolution: {integrity: sha512-VF+S5zG8wxfinLKLrWcl4WUizMx+LeJrG4PM/M78OhcwocpV0jiyhX/pG6Q9jIOhrb/ckYi6nHnaR5OojlOZCQ==}
     dev: true
 
   /ms@2.1.2:
@@ -2334,12 +2286,6 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
-  /tiny-monaco@0.0.5:
-    resolution: {integrity: sha512-3pId1lgYwLl/jpA0Lz3CD/f8GkN7W/hn74F/tOzPd/ONIw5rmCxHGQ/wqgCOTxCF+VVsGm/B+xxtuSUokGxruA==}
-    dependencies:
-      monaco-editor: 0.41.0
-    dev: true
-
   /tinybench@2.5.1:
     resolution: {integrity: sha512-65NKvSuAVDP/n4CqH+a9w2kTlLReS9vhsAP06MWx+/89nMinJyB2icyl58RIcqCmIggpojIGeuJGhjU1aGMBSg==}
     dev: true
@@ -2553,12 +2499,12 @@ packages:
       - terser
     dev: true
 
-  /vscode-oniguruma@2.0.1:
-    resolution: {integrity: sha512-poJU8iHIWnC3vgphJnrLZyI3YdqRlR27xzqDmpPXYzA93R4Gk8z7T6oqDzDoHjoikA2aS82crdXFkjELCdJsjQ==}
+  /vscode-oniguruma@1.6.2:
+    resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==}
     dev: true
 
-  /vscode-textmate@9.0.0:
-    resolution: {integrity: sha512-Cl65diFGxz7gpwbav10HqiY/eVYTO1sjQpmRmV991Bj7wAoOAjGQ97PpQcXorDE2Uc4hnGWLY17xme+5t6MlSg==}
+  /vscode-textmate@7.0.3:
+    resolution: {integrity: sha512-OkE/mYm1h5ZX9IEKeKR/2zKDt2SzYyIfTEOVFX4QhA+B3BPROvNEmDDXvBThz3qknKO3Cy/VVb8/sx1UlqP/Xw==}
     dev: true
 
   /vue-eslint-parser@9.3.1(eslint@8.51.0):

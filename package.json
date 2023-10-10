@@ -7,25 +7,19 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "postinstall": "monaco-treemending",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.21",
-    "@codingame/monaco-vscode-configuration-service-override": "^1.82.4",
-    "@codingame/monaco-vscode-languages-service-override": "^1.82.4",
-    "@codingame/monaco-vscode-textmate-service-override": "^1.82.4",
-    "@codingame/monaco-vscode-theme-service-override": "^1.82.4",
     "@rollup/plugin-commonjs": "^25.0.5",
     "@types/node": "^20.8.3",
-    "@types/vscode": "^1.83.0",
     "eslint": "^8.50.0",
-    "tiny-monaco": "^0.0.5",
+    "monaco-editor": "0.34.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vscode": "npm:@codingame/monaco-vscode-api@^1.82.4",
-    "vscode-oniguruma": "^2.0.1",
-    "vscode-textmate": "^9.0.0"
+    "vscode": "npm:@codingame/monaco-vscode-api@1.69.13",
+    "vscode-oniguruma": "1.6.2",
+    "vscode-textmate": "7.0.3"
   }
 }
