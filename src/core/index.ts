@@ -1,4 +1,3 @@
-
 import '@/index.css';
 import onigFile from 'vscode-oniguruma/release/onig.wasm?url';
 import getConfigurationServiceOverride from 'vscode/service-override/configuration';
@@ -9,10 +8,21 @@ import getTextmateServiceOverride, { setGrammars } from 'vscode/service-override
 import getThemeServiceOverride, { IThemeExtensionPoint, setDefaultThemes } from 'vscode/service-override/theme';
 import { StandaloneServices } from 'vscode/services';
 
-import { ThemeConfigList, Themes } from '@/config';
-import grammars from '@/grammars';
-import languages from '@/languages';
-import { makeThemePath } from '@/utils';
+import {
+  GRAMMAR_LIST,
+  LANGUAGES_ENUM,
+  LANGUAGE_LIST,
+  THEME_CONFIG_LIST,
+  THEME_ENUM
+} from '@/config';
+
+import {
+  makeConfigImportPath,
+  makeConfigPath,
+  makeGrammarImportPath,
+  makeThemeImportPath,
+  makeThemePath
+} from '@/utils';
 
 StandaloneServices.initialize({
   // 删掉这个 dialog server 会导致 server 循环加载，不知道为什么
@@ -27,25 +37,27 @@ StandaloneServices.initialize({
 	...getLanguagesServiceOverride()
 })
 
-const themeLoader = Object.values(Themes).reduce((res, cur) => {
-  res[makeThemePath(cur, false)] = async () => (await import(`../themes/theme-defaults~${cur}.json?raw`)).default
+const themeLoader = Object.values(THEME_ENUM).reduce((res, cur) => {
+  const importPath = makeThemeImportPath(cur)
+  res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
   return res
 }, {} as Record<string, () => Promise<string>>)
 
 setDefaultThemes(
-  ThemeConfigList as IThemeExtensionPoint[],
+  THEME_CONFIG_LIST as IThemeExtensionPoint[],
   async (theme) => themeLoader[theme.path.slice(1)]!()
 )
 
-setLanguages(languages)
+setLanguages(LANGUAGE_LIST)
 
-setLanguageConfiguration(`/java-configuration.json`, async () => {
-	return (await import('../resources/java-language-configuration.json?raw')).default
+Object.values(LANGUAGES_ENUM).forEach(language => {
+  const path = makeConfigPath(language, false)
+  const importPath = makeConfigImportPath(language)
+
+  setLanguageConfiguration(path, async () => (await import(importPath)).default)
 })
 
-setGrammars(grammars, async (grammar) => {
-	switch (grammar.language) {
-		case 'java': return (await import('../resources/java.tmLanguage.json?raw')).default
-	}
-	throw new Error('grammar not found')
+setGrammars(GRAMMAR_LIST, async ({ language }) => {
+  const importPath = makeGrammarImportPath(language)
+  return (await import(importPath)).default
 })
