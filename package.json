@@ -10,6 +10,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
+  "peerDependencies": {
+    "monaco-editor": "0.34.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.21",
     "@codingame/monaco-vscode-java-default-extension": "^1.82.4",

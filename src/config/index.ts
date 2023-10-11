@@ -1,8 +1,24 @@
+import { IThemes } from '@/types'
 import { makeConfigPath, makeGrammarPath, makeThemePath } from '@/utils'
+
+export const Themes: IThemes = {
+  VSDark: 'vs-dark'
+}
 
 export const THEME_ENUM = {
   DarkPlus: 'dark_plus',
   DarkVS: 'dark_vs'
+}
+
+export const THEME_MAP = {
+  [Themes.VSDark]: THEME_ENUM.DarkPlus
+}
+
+export function makeTheme(theme: keyof IThemes) {
+  const prefix = Themes[theme]
+  const suffix = THEME_MAP[prefix]
+
+  return `${prefix} vscode-theme-defaults-themes-${suffix}-json`;
 }
 
 export const THEME_CONFIG_LIST = [
