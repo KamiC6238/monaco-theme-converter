@@ -12,8 +12,8 @@ import {
   GRAMMAR_LIST,
   LANGUAGES_ENUM,
   LANGUAGE_LIST,
-  THEME_CONFIG_LIST,
-  THEME_ENUM
+  THEME_ENUM,
+  THEME_LIST
 } from '@/config';
 
 import {
@@ -44,7 +44,7 @@ const themeLoader = Object.values(THEME_ENUM).reduce((res, cur) => {
 }, {} as Record<string, () => Promise<string>>)
 
 setDefaultThemes(
-  THEME_CONFIG_LIST as IThemeExtensionPoint[],
+  THEME_LIST as IThemeExtensionPoint[],
   async (theme) => themeLoader[theme.path.slice(1)]!()
 )
 
