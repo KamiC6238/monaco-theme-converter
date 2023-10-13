@@ -7,4 +7,9 @@ export default [
     scopeName: 'source.java',
     path: makeGrammarPath(LANGUAGES_ENUM.Java),
   },
+  {
+    language: 'json',
+    scopeName: 'source.json',
+    path: makeGrammarPath(LANGUAGES_ENUM.Json),
+  },
 ]

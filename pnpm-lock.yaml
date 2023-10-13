@@ -7,6 +7,9 @@ devDependencies:
   '@codingame/monaco-vscode-java-default-extension':
     specifier: ^1.82.4
     version: 1.82.4
+  '@codingame/monaco-vscode-json-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
   '@rollup/plugin-commonjs':
     specifier: ^25.0.5
     version: 25.0.5
@@ -120,10 +123,23 @@ packages:
       monaco-editor: 0.43.0
     dev: true
 
+  /@codingame/monaco-vscode-api@1.82.6:
+    resolution: {integrity: sha512-Trxow2RIu4i6EvS2wEIl0cktpL4UMv0e1UItUIfyRtZsCECnuE6Auedp6BK2JLzAH96yVgp9elEBlTo7rvnf0Q==}
+    hasBin: true
+    dependencies:
+      monaco-editor: 0.43.0
+    dev: true
+
   /@codingame/monaco-vscode-java-default-extension@1.82.4:
     resolution: {integrity: sha512-QUIJeXX6b2woZ9knx3zljTLBn+0vMOZlhH2HPn3JE6I/YwVhaQjw2L2BCocBoHWoLKATzTTbmgldGDCFFYEQ+Q==}
     dependencies:
       vscode: /@codingame/monaco-vscode-api@1.82.4
+    dev: true
+
+  /@codingame/monaco-vscode-json-default-extension@1.82.6:
+    resolution: {integrity: sha512-Bzd2n0fVB2CyPexcuL2EQtR1BgEImYIOxzOC6bKSL8D2IP1rshPfpVfx6XrzadkGKmGlc/6yGkI8uWTBdBbkrg==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
     dev: true
 
   /@es-joy/jsdoccomment@0.40.1:

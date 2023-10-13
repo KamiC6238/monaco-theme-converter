@@ -20,9 +20,9 @@ export default class MonacoThemeConverter {
 }
 
 const editor = monaco.editor.create(document.getElementById('app')!, {
-  language: 'java'
+  language: 'json',
 })
 
 const converter = new MonacoThemeConverter(editor)
 
-converter.setTheme('VS')
+converter.setTheme('VSDark')
