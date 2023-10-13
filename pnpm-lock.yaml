@@ -4,10 +4,52 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: 1.0.0-beta.21
     version: 1.0.0-beta.21(eslint@8.51.0)(typescript@5.0.2)(vitest@0.34.6)
+  '@codingame/monaco-vscode-clojure-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-csharp-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-css-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-fsharp-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-html-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
   '@codingame/monaco-vscode-java-default-extension':
     specifier: ^1.82.4
     version: 1.82.4
   '@codingame/monaco-vscode-json-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-powershell-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-pug-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-python-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-r-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-rust-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-sql-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-swift-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-vb-default-extension':
+    specifier: ^1.82.6
+    version: 1.82.6
+  '@codingame/monaco-vscode-xml-default-extension':
     specifier: ^1.82.6
     version: 1.82.6
   '@rollup/plugin-commonjs':
@@ -130,6 +172,36 @@ packages:
       monaco-editor: 0.43.0
     dev: true
 
+  /@codingame/monaco-vscode-clojure-default-extension@1.82.6:
+    resolution: {integrity: sha512-noGhs+wN+joHTKxSyHTNmoVP3DfU4bMhEvHj0FK5Ht7i2ihaZ8gNJEBbGuuBqVONb2IcT8DpMEeEo6W66kJtrw==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-csharp-default-extension@1.82.6:
+    resolution: {integrity: sha512-PQLE2TEd7c/XdOWDDTH7ayCqsgw8Uid6w99SfTgKcQ3fiETGUexDUqfWrrV4cUrDcOYcDP2g++g+7I02Pv8QGQ==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-css-default-extension@1.82.6:
+    resolution: {integrity: sha512-Yar0pd5aG+Z2Aoy4LVtkY4XBbQTwGgqdrHIuFIzEhSZflmyo+QeVGFa8Gqb9K52D3J8uZGyHRrvXsX3j/Fg/LA==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-fsharp-default-extension@1.82.6:
+    resolution: {integrity: sha512-LEVF/E0t0flptiJuCunIGin8QL4ztrM8fPMI5GBFbJDj63CnQg5hGz022ot9YpRX5PC+lXvMZnc/BM103Kzr4A==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-html-default-extension@1.82.6:
+    resolution: {integrity: sha512-NUQJIKJL45qWesUpoFpkfdynZTr2HulgsdK/8pqTv5fHCyvMtHxhOs5R6UB5F4b5CA5iCdXP+TB55bhXIveuvw==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
   /@codingame/monaco-vscode-java-default-extension@1.82.4:
     resolution: {integrity: sha512-QUIJeXX6b2woZ9knx3zljTLBn+0vMOZlhH2HPn3JE6I/YwVhaQjw2L2BCocBoHWoLKATzTTbmgldGDCFFYEQ+Q==}
     dependencies:
@@ -138,6 +210,60 @@ packages:
 
   /@codingame/monaco-vscode-json-default-extension@1.82.6:
     resolution: {integrity: sha512-Bzd2n0fVB2CyPexcuL2EQtR1BgEImYIOxzOC6bKSL8D2IP1rshPfpVfx6XrzadkGKmGlc/6yGkI8uWTBdBbkrg==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-powershell-default-extension@1.82.6:
+    resolution: {integrity: sha512-S0NJ8ho5jIEICdnpKq0UF7/rJWMcxyCYHschuFlsNXJWIONgvsUdHE/pxNWazQUOIC+fGDV0QzHiztWyq2nMgQ==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-pug-default-extension@1.82.6:
+    resolution: {integrity: sha512-9tBDjgiCSrxvIpfjlW/FKavfhQx2nXaS8cnlqG3Vkge2qw1Fh32LD+IpKbmsM6CTR2cu0nHO7g2crgzObRWiiA==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-python-default-extension@1.82.6:
+    resolution: {integrity: sha512-dFn0U25D9XA3VFecBdDmQ/Y8iAlDP7c5fzWZphosbXG56nLBFh2HwOaUHRoX5PsnD3QkoyZpyRLfHbb8vDR2Eg==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-r-default-extension@1.82.6:
+    resolution: {integrity: sha512-wb0bc34pFzAq05azLUy0iu6NBQBX24LqHERkZFUpK1D6qXzU0543L/hRY09/korJpf/x3WYyvu/nOXtXtF2nlg==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-rust-default-extension@1.82.6:
+    resolution: {integrity: sha512-p1wKx/3kk/X/V9VMuKOqya3/PdCpF5EXWGBO0W5c+yzjhSE96DZgEdSXlNb3Z59Hk0dqMSyUgn6bB2o0Gc7w1g==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-sql-default-extension@1.82.6:
+    resolution: {integrity: sha512-N437gRjiS12HrLS+VCWmueo0BMY5dEDV700kGqJ3nt4/FHEWWRrlPhGyykKzW2s9TyNcWVaSV+VHpgvVAy3txA==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-swift-default-extension@1.82.6:
+    resolution: {integrity: sha512-HvcxBmJLxpjS7C8fZERJ2Qkkf+ACwwX17UO0oXe9ZvQRhZjDnlbA6ubWMTIA+db7Ujdb/1EQ9mMbyVaI1QMtdg==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-vb-default-extension@1.82.6:
+    resolution: {integrity: sha512-FLmq0HXvXFAU1yngXcZN8v8puJNImSffTkBNNoz/wcwQHrSA5jYsB8ywhh51zN83S3uK9oFAPF3EEl4b9qitpw==}
+    dependencies:
+      vscode: /@codingame/monaco-vscode-api@1.82.6
+    dev: true
+
+  /@codingame/monaco-vscode-xml-default-extension@1.82.6:
+    resolution: {integrity: sha512-4U3sFYh6eQ0QcsmClbTAnYzp0LyKDh+l0UpcWDr34ngUlw47I013ngIbh0yEa+jVM42UqxiC1r/5PQx1oHOzHw==}
     dependencies:
       vscode: /@codingame/monaco-vscode-api@1.82.6
     dev: true
