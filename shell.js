@@ -30,14 +30,14 @@ function makeFilename(lang) {
   return `monaco-vscode-${lang}-default-extension`
 }
 
-function copy(src, dest) {
-  fs.copyFileSync(src, dest)
+function createFile(path) {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path) 
+  }
 }
 
 function start() {
-  if (!fs.existsSync(output)) {
-    fs.mkdirSync(output) 
-  }
+  createFile(output)
   
   directories.forEach(directory => {
     const lang = directory.match(regex)[1]
@@ -50,12 +50,10 @@ function start() {
     const langeConfigDestination = `${filename}/${lang}-configuration.json`
     const grammarDestination = `${filename}/${lang}.tmLanguage.json`
   
-    if (!fs.existsSync(filename)) {
-      fs.mkdirSync(filename)
-    }
+    createFile(filename)
   
-    copy(langConfigSource, langeConfigDestination)
-    copy(grammarSource, grammarDestination)
+    fs.copyFileSync(langConfigSource, langeConfigDestination)
+    fs.copyFileSync(grammarSource, grammarDestination)
   })
 }
 
