@@ -4,7 +4,7 @@ const output = './language-configurations'
 const packagePath = './node_modules/@codingame'
 
 const directories = fs.readdirSync(packagePath)
-const regex = /monaco-vscode-(\w+)-default-extension/
+const regex = /monaco-vscode-(\w+(?:-\w+)?)-default-extension/
 
 function fixGrammarLang(lang) {
   switch(lang) {
@@ -12,6 +12,12 @@ function fixGrammarLang(lang) {
       return 'MagicPython'
     case 'vb':
       return 'asp-vb-net'
+    case 'javascript':
+      return 'JavaScript'
+    case 'shellscript':
+      return 'shell-unix-bash'
+    case 'typescript-basics':
+      return 'TypeScript'
     default:
       return lang
   }
@@ -21,8 +27,21 @@ function fixConfigLang(lang) {
   switch (lang) {
     case 'xml':
       return 'xml.'
+    case 'javascript':
+      return 'javascript-'
+    case 'perl':
+      return 'perl.'
     default:
       return ''
+  }
+}
+
+function fixLang(lang) {
+  switch (lang) {
+    case 'typescript-basics':
+      return 'typescript'
+    default:
+      return lang
   }
 }
 
@@ -41,14 +60,15 @@ function start() {
   
   directories.forEach(directory => {
     const lang = directory.match(regex)[1]
-    const filename = `${output}/${lang}`
+    const fixedLang = fixLang(lang)
+    const filename = `${output}/${fixedLang}`
   
     const commonSource = `${packagePath}/${makeFilename(lang)}`
     const langConfigSource = `${commonSource}/${fixConfigLang(lang)}language-configuration.json`
     const grammarSource = `${commonSource}/${fixGrammarLang(lang)}.tmLanguage.json`
   
-    const langeConfigDestination = `${filename}/${lang}-configuration.json`
-    const grammarDestination = `${filename}/${lang}.tmLanguage.json`
+    const langeConfigDestination = `${filename}/${fixedLang}-configuration.json`
+    const grammarDestination = `${filename}/${fixedLang}.tmLanguage.json`
   
     createFile(filename)
   
