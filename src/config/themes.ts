@@ -1,49 +1,58 @@
-import { THEME_ENUM } from '@/config/enum'
 import { makeThemePath } from '@/utils'
 
-export const ThemeFix = {
+export const themes = {
+  VSDark: 'vs-dark',
+  DarkPlus: 'dark_plus',
+  DarkVS: 'dark_vs',
+
+  VS: 'vs',
+  LightPlus: 'light_plus',
+  LightVS: 'light_vs',
+}
+
+export const themeFix = {
   VSDark: {
-    prefix: THEME_ENUM.VSDark,
-    suffix: THEME_ENUM.DarkPlus,
+    prefix: themes.VSDark,
+    suffix: themes.DarkPlus,
   },
   VS: {
-    prefix: THEME_ENUM.VS,
-    suffix: THEME_ENUM.LightPlus,
+    prefix: themes.VS,
+    suffix: themes.LightPlus,
   },
 }
 
 export const THEME_MAP = {
-  [THEME_ENUM.VSDark]: THEME_ENUM.DarkPlus,
-  [THEME_ENUM.VS]: THEME_ENUM.LightPlus,
+  [themes.VSDark]: themes.DarkPlus,
+  [themes.VS]: themes.LightPlus,
 }
 
-export const THEME_LIST = [
+export const themeConfigList = [
   {
     id: 'Default Dark+',
     label: 'Dark+ (default dark)',
-    uiTheme: THEME_ENUM.VSDark,
-    path: makeThemePath(THEME_ENUM.DarkPlus),
+    uiTheme: themes.VSDark,
+    path: makeThemePath(themes.DarkPlus),
     extension: 'theme-defaults',
   },
   {
     id: 'Visual Studio Dark',
     label: 'Dark (Visual Studio)',
-    uiTheme: THEME_ENUM.VSDark,
-    path: makeThemePath(THEME_ENUM.DarkVS),
+    uiTheme: themes.VSDark,
+    path: makeThemePath(themes.DarkVS),
     extension: 'theme-defaults',
   },
   {
     id: 'Default Light+',
     label: 'Light+ (default light)',
-    uiTheme: THEME_ENUM.VS,
-    path: makeThemePath(THEME_ENUM.LightPlus),
+    uiTheme: themes.VS,
+    path: makeThemePath(themes.LightPlus),
     extension: 'theme-defaults',
   },
   {
     id: 'Visual Studio Light',
     label: 'Light (Visual Studio)',
-    uiTheme: THEME_ENUM.VS,
-    path: makeThemePath(THEME_ENUM.LightVS),
+    uiTheme: themes.VS,
+    path: makeThemePath(themes.LightVS),
     extension: 'theme-defaults',
   },
 ]

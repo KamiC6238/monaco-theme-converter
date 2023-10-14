@@ -10,11 +10,10 @@ import getThemeServiceOverride, { setDefaultThemes } from 'vscode/service-overri
 import { StandaloneServices } from 'vscode/services'
 
 import {
-  GRAMMAR_LIST,
-  LANGUAGES_ENUM,
-  LANGUAGE_LIST,
-  THEME_ENUM,
-  THEME_LIST,
+  grammars,
+  languages,
+  themeConfigList,
+  themes,
 } from '@/config'
 
 import {
@@ -26,7 +25,7 @@ import {
 } from '@/utils'
 
 StandaloneServices.initialize({
-  // 删掉这个 dialog server 会导致 server 循环加载，不知道为什么
+  // remove dialog override service will occur server circle error
   ...getDialogsServiceOverride(),
   ...getConfigurationServiceOverride(),
   ...getTextmateServiceOverride(async () => {
@@ -38,38 +37,27 @@ StandaloneServices.initialize({
   ...getLanguagesServiceOverride(),
 })
 
-const themeLoader = Object.values(THEME_ENUM).reduce((res, cur) => {
+const themeLoader = Object.values(themes).reduce((res, cur) => {
   const importPath = makeThemeImportPath(cur)
   res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
   return res
 }, {} as Record<string, () => Promise<string>>)
 
 setDefaultThemes(
-  THEME_LIST as IThemeExtensionPoint[],
+  themeConfigList as IThemeExtensionPoint[],
   async theme => themeLoader[theme.path.slice(1)]!(),
 )
 
-setLanguages(LANGUAGE_LIST)
+setLanguages(languages)
 
-Object.values(LANGUAGES_ENUM).forEach((language) => {
-  const path = makeConfigPath(language, false)
-  const importPath = makeConfigImportPath(language)
+languages.forEach(({ id }) => {
+  const path = makeConfigPath(id, false)
+  const importPath = makeConfigImportPath(id)
 
   setLanguageConfiguration(path, async () => (await import(importPath)).default)
 })
 
-setGrammars(GRAMMAR_LIST, async ({ language }) => {
-  // const fixedGrammarLang = (language: string) => {
-  //   switch (language) {
-  //     case 'typescript-basics':
-  //       return 'typescript'
-  //     default:
-  //       return language
-  //   }
-  // }
-
-  // const _language = fixedGrammarLang(language)
-
+setGrammars(grammars, async ({ language }) => {
   const importPath = makeGrammarImportPath(language)
   return (await import(importPath)).default
 })

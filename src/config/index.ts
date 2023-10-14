@@ -1,4 +1,4 @@
-export * from './enum'
-export { default as GRAMMAR_LIST } from './grammar'
-export { default as LANGUAGE_LIST } from './language'
+export { default as grammars } from './grammar'
+export { default as languages } from './language'
 export * from './themes'
+

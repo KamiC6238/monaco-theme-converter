@@ -1,4 +1,4 @@
-import { ThemeFix } from '@/config'
+import { themeFix } from '@/config'
 import type { IThemes } from '@/types'
 
 export function makeThemePath(theme: string, needDot = true) {
@@ -26,7 +26,7 @@ export function makeThemeImportPath(theme: string) {
 }
 
 export function makeTheme(theme: keyof IThemes) {
-  const { prefix, suffix } = ThemeFix[theme]
+  const { prefix, suffix } = themeFix[theme]
 
   return `${prefix} vscode-theme-defaults-themes-${suffix}-json`
 }
