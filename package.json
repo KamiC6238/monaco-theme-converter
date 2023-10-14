@@ -1,8 +1,8 @@
 {
-  "name": "yuki",
-  "private": true,
-  "version": "0.0.0",
+  "name": "monaco-theme-converter",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

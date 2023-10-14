@@ -59,6 +59,17 @@ Object.values(LANGUAGES_ENUM).forEach((language) => {
 })
 
 setGrammars(GRAMMAR_LIST, async ({ language }) => {
+  // const fixedGrammarLang = (language: string) => {
+  //   switch (language) {
+  //     case 'typescript-basics':
+  //       return 'typescript'
+  //     default:
+  //       return language
+  //   }
+  // }
+
+  // const _language = fixedGrammarLang(language)
+
   const importPath = makeGrammarImportPath(language)
   return (await import(importPath)).default
 })
