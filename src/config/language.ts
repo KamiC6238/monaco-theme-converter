@@ -143,13 +143,26 @@ export default [
   },
   {
     id: 'javascript',
-    aliases: ['JavaScript', 'javascript', 'js'],
-    extensions: ['.js', '.es6', '.mjs', '.cjs', '.pac'],
-    filenames: ['jakefile'],
+    aliases: [
+      'JavaScript',
+      'javascript',
+      'js',
+    ],
+    extensions: [
+      '.js',
+      '.es6',
+      '.mjs',
+      '.cjs',
+      '.pac',
+    ],
+    filenames: [
+      'jakefile',
+    ],
     firstLine: '^#!.*\\bnode',
-    mimetypes: ['text/javascript'],
+    mimetypes: [
+      'text/javascript',
+    ],
     configuration: './javascript-configuration.json',
-    path: './javascript-configuration.json',
   },
   {
     id: 'jsx-tags',

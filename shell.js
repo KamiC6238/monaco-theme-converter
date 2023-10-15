@@ -80,7 +80,6 @@ function fixGrammarPath(manifest, lang) {
       language: fixLang(language || lang),
       scopeName,
       path: `./${lang}.tmLanguage.json`,
-      configuration: `./${lang}.tmLanguage.json`,
     });
   }
 }

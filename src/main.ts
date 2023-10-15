@@ -22,13 +22,9 @@ export default class MonacoThemeConverter {
   }
 }
 
-const code = `function foo() {
-  console.log(1)
-}`
-
 const editor = monaco.editor.create(document.getElementById('app')!, {
   language: 'javascript',
-  value: code,
+  value: 'class Test {}',
   automaticLayout: true,
   minimap: {
     enabled: false,

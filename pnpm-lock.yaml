@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^1.82.6
     version: 1.82.6
   '@codingame/monaco-vscode-java-default-extension':
-    specifier: ^1.82.4
-    version: 1.82.4
+    specifier: ^1.82.6
+    version: 1.82.6
   '@codingame/monaco-vscode-javascript-default-extension':
     specifier: ^1.82.6
     version: 1.82.6
@@ -209,13 +209,6 @@ packages:
       vscode-textmate: 7.0.3
     dev: true
 
-  /@codingame/monaco-vscode-api@1.82.4:
-    resolution: {integrity: sha512-hyqKIlucXSmT2YRgQPdfo6rchDPG8W3S2rSvRtrzQRBdLgbzjPf8p5yEcMDWrry3YQgFvVzPCIs81W7052JeUQ==}
-    hasBin: true
-    dependencies:
-      monaco-editor: 0.43.0
-    dev: true
-
   /@codingame/monaco-vscode-api@1.82.6:
     resolution: {integrity: sha512-Trxow2RIu4i6EvS2wEIl0cktpL4UMv0e1UItUIfyRtZsCECnuE6Auedp6BK2JLzAH96yVgp9elEBlTo7rvnf0Q==}
     hasBin: true
@@ -283,10 +276,10 @@ packages:
       vscode: /@codingame/monaco-vscode-api@1.82.6
     dev: true
 
-  /@codingame/monaco-vscode-java-default-extension@1.82.4:
-    resolution: {integrity: sha512-QUIJeXX6b2woZ9knx3zljTLBn+0vMOZlhH2HPn3JE6I/YwVhaQjw2L2BCocBoHWoLKATzTTbmgldGDCFFYEQ+Q==}
+  /@codingame/monaco-vscode-java-default-extension@1.82.6:
+    resolution: {integrity: sha512-qbXgB/Wxsl3YgI6k7H7TeNQXm3nqRFG9pzdTSwlJRzbaFIiQJJ1vbeq8vir3qt6Ob2y+wAIhw3I+eg7h+Kev/g==}
     dependencies:
-      vscode: /@codingame/monaco-vscode-api@1.82.4
+      vscode: /@codingame/monaco-vscode-api@1.82.6
     dev: true
 
   /@codingame/monaco-vscode-javascript-default-extension@1.82.6:
