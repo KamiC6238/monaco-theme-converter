@@ -1,6 +1,10 @@
 # monaco-theme-converter
 An easy way to use vscode theme in monaco-editor.
 
+# Supported Language
+- Java
+- JavaScript
+
 # Usage
 ```javascript
 import MonacoThemeConverter from 'monaco-theme-converter'
