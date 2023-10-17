@@ -3,7 +3,7 @@ import type { IThemes } from '@/types'
 import { makeTheme } from '@/utils'
 
 // eslint-disable-next-line import/order
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 export default class MonacoThemeConverter {
   private editor: monaco.editor.IStandaloneCodeEditor | null = null
@@ -22,15 +22,15 @@ export default class MonacoThemeConverter {
   }
 }
 
-const editor = monaco.editor.create(document.getElementById('app')!, {
-  language: 'javascript',
-  value: 'function foo() {}',
-  automaticLayout: true,
-  minimap: {
-    enabled: false,
-  },
-})
+// const editor = monaco.editor.create(document.getElementById('app')!, {
+//   language: 'javascript',
+//   value: 'function foo() {}',
+//   automaticLayout: true,
+//   minimap: {
+//     enabled: false,
+//   },
+// })
 
-const converter = new MonacoThemeConverter(editor)
+// const converter = new MonacoThemeConverter(editor)
 
-converter.setTheme('VSDark')
+// converter.setTheme('VSDark')
