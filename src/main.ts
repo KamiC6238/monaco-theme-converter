@@ -1,5 +1,5 @@
 import '@/core'
-import type { IThemes } from '@/types'
+import type { IMonacoThemeConverter, IThemes } from '@/types'
 import { makeTheme } from '@/utils'
 
 // eslint-disable-next-line import/order
@@ -8,7 +8,8 @@ import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 export default class MonacoThemeConverter {
   private editor: monaco.editor.IStandaloneCodeEditor | null = null
 
-  constructor(editor: monaco.editor.IStandaloneCodeEditor) {
+  constructor(props: IMonacoThemeConverter) {
+    const { editor } = props
     this.editor = editor
   }
 
