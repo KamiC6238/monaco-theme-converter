@@ -14,7 +14,21 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, './src/main.ts'),
-      formats: ['cjs', 'es'],
+    },
+    rollupOptions: {
+      external: ['monaco-editor'],
+      output: [
+        {
+          dir: 'dist/esm',
+          format: 'es',
+          entryFileNames: 'index.js',
+        },
+        {
+          dir: 'dist/cjs',
+          format: 'cjs',
+          entryFileNames: 'index.cjs',
+        },
+      ],
     },
   },
 })

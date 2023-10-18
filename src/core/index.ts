@@ -1,4 +1,3 @@
-import '@/index.css'
 import onigFile from 'vscode-oniguruma/release/onig.wasm?url'
 import getConfigurationServiceOverride from 'vscode/service-override/configuration'
 import getDialogsServiceOverride from 'vscode/service-override/dialogs'

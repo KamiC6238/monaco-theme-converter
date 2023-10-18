@@ -2,10 +2,10 @@ import { makeThemePath } from '@/utils'
 
 export const themes = {
   VSDark: 'vs-dark',
+  VS: 'vs',
+
   DarkPlus: 'dark_plus',
   DarkVS: 'dark_vs',
-
-  VS: 'vs',
   LightPlus: 'light_plus',
   LightVS: 'light_vs',
 }

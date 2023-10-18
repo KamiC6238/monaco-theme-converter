@@ -21,16 +21,3 @@ export default class MonacoThemeConverter {
     })
   }
 }
-
-// const editor = monaco.editor.create(document.getElementById('app')!, {
-//   language: 'javascript',
-//   value: 'function foo() {}',
-//   automaticLayout: true,
-//   minimap: {
-//     enabled: false,
-//   },
-// })
-
-// const converter = new MonacoThemeConverter(editor)
-
-// converter.setTheme('VSDark')
