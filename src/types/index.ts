@@ -8,20 +8,23 @@ export interface IThemes {
 export interface IMonacoThemeConverter {
   editor: monaco.editor.IStandaloneCodeEditor
   /**
-   * @description Maybe a CDN url, or other to save language configuration, grammars, themes resources.
-   *
-   * example:
-   *  1. https://static.abc.xyz/resources/java/java-configuration.json
-   *  2. https://static.abc.xyz/resources/java/java.tmLanguage.json
-   *  3. https://static.abc.xyz/resources/themes/dark_plus.json
-   *
-   * required if not provide theme url & configuration url & tmLanguage url
+   * @description The domain used for resources of languages or themes.
+   * @example static.kobayashi.com
    */
-  url?: string
-  /** customzed theme source url */
-  themeUrl?: string
-  /** customzed language configuration source url */
-  configurationUrl?: string
-  /** customzed language tmLanguage source url */
-  tmLanguageUrl?: string
+  domain: string
+  /**
+   * @description The resources path of languages or themes, default is '/'
+   * @example
+   * "https://${domain}/java/java-configuration.json"
+   * "https://${domain}/java/java.tmLanguage.json"
+   * "https://${domain}/themes/dark_plus.json"
+   *
+   * @description if path is '/resources', that means
+   * @example "https://${domain}/resources/java/java-configuration.json"
+   */
+  path?: string
+  /**
+   * @description protocol, default is https
+   */
+  protocol?: string
 }
