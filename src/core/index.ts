@@ -23,40 +23,71 @@ import {
   makeThemePath,
 } from '@/utils'
 
-StandaloneServices.initialize({
-  // remove dialog override service will occur server circle error
-  ...getDialogsServiceOverride(),
-  ...getConfigurationServiceOverride(),
-  ...getTextmateServiceOverride(async () => {
-    const response = await fetch(onigFile)
-    return await response.arrayBuffer()
-  }),
-  ...getThemeServiceOverride(),
-  ...getLanguageConfigurationServiceOverride(),
-  ...getLanguagesServiceOverride(),
-})
+type ThemeLoader = Record<string, () => Promise<string>>
 
-const themeLoader = Object.values(themes).reduce((res, cur) => {
-  const importPath = makeThemeImportPath(cur)
-  res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
-  return res
-}, {} as Record<string, () => Promise<string>>)
+export default class Core {
+  private themeLoader: ThemeLoader | null = null
+  private sourceUrl = ''
 
-setDefaultThemes(
-  themeConfigList as IThemeExtensionPoint[],
-  async theme => themeLoader[theme.path.slice(1)]!(),
-)
+  constructor(sourceUrl: string) {
+    this.sourceUrl = sourceUrl
+  }
 
-setLanguages(languages)
+  init() {
+    this.initServices()
+    this.initThemeLoader()
+    this.initDefaultTheme()
+    this.initLanguages()
+    this.initGrammars()
+  }
 
-languages.forEach(({ id }) => {
-  const path = makeConfigPath(id, false)
-  const importPath = makeConfigImportPath(id)
+  private initServices() {
+    StandaloneServices.initialize({
+      // remove dialog override service will occur server circle error
+      ...getDialogsServiceOverride(),
+      ...getConfigurationServiceOverride(),
+      ...getTextmateServiceOverride(async () => {
+        const response = await fetch(onigFile)
+        return await response.arrayBuffer()
+      }),
+      ...getThemeServiceOverride(),
+      ...getLanguageConfigurationServiceOverride(),
+      ...getLanguagesServiceOverride(),
+    })
+  }
 
-  setLanguageConfiguration(path, async () => (await import(importPath)).default)
-})
+  private initThemeLoader() {
+    this.themeLoader = Object.values(themes).reduce((res, cur) => {
+      const importPath = makeThemeImportPath(cur)
+      res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
+      return res
+    }, {} as ThemeLoader)
+  }
 
-setGrammars(grammars, async ({ language }) => {
-  const importPath = makeGrammarImportPath(language)
-  return (await import(importPath)).default
-})
+  private initDefaultTheme() {
+    if (this.themeLoader) {
+      setDefaultThemes(
+        themeConfigList as IThemeExtensionPoint[],
+        async theme => this.themeLoader![theme.path.slice(1)]!(),
+      )
+    }
+  }
+
+  private initLanguages() {
+    setLanguages(languages)
+
+    languages.forEach(({ id }) => {
+      const path = makeConfigPath(id, false)
+      const importPath = makeConfigImportPath(id)
+
+      setLanguageConfiguration(path, async () => (await import(importPath)).default)
+    })
+  }
+
+  private initGrammars() {
+    setGrammars(grammars, async ({ language }) => {
+      const importPath = makeGrammarImportPath(language)
+      return (await import(importPath)).default
+    })
+  }
+}
