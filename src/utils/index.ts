@@ -13,20 +13,25 @@ export function makeGrammarPath(language: string, needDot = true) {
   return `${needDot ? '.' : ''}/${language}.tmLanguage.json`
 }
 
-export function makeConfigImportPath(language: string) {
-  return `../resources/${language}${makeConfigPath(language, false)}?raw`
+export function makeConfigImportPath(resourcePrefix: string, language: string) {
+  return `${resourcePrefix}/${language}${makeConfigPath(language, false)}`
 }
 
-export function makeGrammarImportPath(language: string, suffix = true) {
-  return `../resources/${language}/${language}.tmLanguage${suffix ? '.json' : ''}?raw`
+export function makeGrammarImportPath(resourcePrefix: string, language: string, suffix = true) {
+  return `${resourcePrefix}/${language}/${language}.tmLanguage${suffix ? '.json' : ''}`
 }
 
-export function makeThemeImportPath(theme: string) {
-  return `../resources/themes/theme-defaults~${theme}.json?raw`
+export function makeThemeImportPath(resourcePrefix: string, theme: string) {
+  return `${resourcePrefix}/themes/theme-defaults~${theme}.json`
 }
 
 export function makeTheme(theme: keyof IThemes) {
   const { prefix, suffix } = themeFix[theme]
 
   return `${prefix} vscode-theme-defaults-themes-${suffix}-json`
+}
+
+export async function fetchJSON(url: string) {
+  const result = await fetch(url)
+  return await result.json()
 }

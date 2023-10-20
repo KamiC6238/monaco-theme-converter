@@ -16,6 +16,7 @@ import {
 } from '@/config'
 
 import {
+  fetchJSON,
   makeConfigImportPath,
   makeConfigPath,
   makeGrammarImportPath,
@@ -25,69 +26,49 @@ import {
 
 type ThemeLoader = Record<string, () => Promise<string>>
 
-export default class Core {
-  private themeLoader: ThemeLoader | null = null
-  private sourceUrl = ''
+let resourcePrefix = ''
 
-  constructor(sourceUrl: string) {
-    this.sourceUrl = sourceUrl
-  }
+export function setResourcePath(prefix: string) {
+  resourcePrefix = prefix
+}
 
-  init() {
-    this.initServices()
-    this.initThemeLoader()
-    this.initDefaultTheme()
-    this.initLanguages()
-    this.initGrammars()
-  }
+export function init() {
+  StandaloneServices.initialize({
+    // remove dialog override service will occur server circle error
+    ...getDialogsServiceOverride(),
+    ...getConfigurationServiceOverride(),
+    ...getTextmateServiceOverride(async () => {
+      const response = await fetch(onigFile)
+      return await response.arrayBuffer()
+    }),
+    ...getThemeServiceOverride(),
+    ...getLanguageConfigurationServiceOverride(),
+    ...getLanguagesServiceOverride(),
+  })
 
-  private initServices() {
-    StandaloneServices.initialize({
-      // remove dialog override service will occur server circle error
-      ...getDialogsServiceOverride(),
-      ...getConfigurationServiceOverride(),
-      ...getTextmateServiceOverride(async () => {
-        const response = await fetch(onigFile)
-        return await response.arrayBuffer()
-      }),
-      ...getThemeServiceOverride(),
-      ...getLanguageConfigurationServiceOverride(),
-      ...getLanguagesServiceOverride(),
-    })
-  }
+  const themeLoader = Object.values(themes).reduce((res, cur) => {
+    const importPath = makeThemeImportPath(resourcePrefix, cur)
+    res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
+    return res
+  }, {} as ThemeLoader)
 
-  private initThemeLoader() {
-    this.themeLoader = Object.values(themes).reduce((res, cur) => {
-      const importPath = makeThemeImportPath(cur)
-      res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
-      return res
-    }, {} as ThemeLoader)
-  }
+  setDefaultThemes(
+    themeConfigList as IThemeExtensionPoint[],
+    async theme => themeLoader![theme.path.slice(1)]!(),
+  )
 
-  private initDefaultTheme() {
-    if (this.themeLoader) {
-      setDefaultThemes(
-        themeConfigList as IThemeExtensionPoint[],
-        async theme => this.themeLoader![theme.path.slice(1)]!(),
-      )
-    }
-  }
+  setLanguages(languages)
 
-  private initLanguages() {
-    setLanguages(languages)
+  languages.forEach(({ id }) => {
+    const path = makeConfigPath(id, false)
+    const importPath = makeConfigImportPath(resourcePrefix, id)
 
-    languages.forEach(({ id }) => {
-      const path = makeConfigPath(id, false)
-      const importPath = makeConfigImportPath(id)
+    setLanguageConfiguration(path, async () => (await import(importPath)).default)
+  })
 
-      setLanguageConfiguration(path, async () => (await import(importPath)).default)
-    })
-  }
-
-  private initGrammars() {
-    setGrammars(grammars, async ({ language }) => {
-      const importPath = makeGrammarImportPath(language)
-      return (await import(importPath)).default
-    })
-  }
+  setGrammars(grammars, async ({ language }) => {
+    const importPath = makeGrammarImportPath(resourcePrefix, language)
+    await fetchJSON(importPath)
+    return (await import(importPath)).default
+  })
 }

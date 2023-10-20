@@ -1,8 +1,20 @@
+// eslint-disable-next-line import/order
+import basicSSL from '@vitejs/plugin-basic-ssl'
+import https from 'node:https'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   mode: 'production',
+  plugins: [basicSSL()],
+  server: {
+    proxy: {
+      '/resources': {
+        target: 'https://danzzzz.netlify.app/',
+        agent: new https.Agent(),
+      },
+    },
+  },
   resolve: {
     alias: [
       {
