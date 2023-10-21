@@ -1,11 +1,13 @@
 import { convert, setResourcePrefix } from '@/core'
-import type { IMonacoThemeConverter, ThemeOptions } from '@/types'
 import { makeTheme } from '@/utils'
+
+// eslint-disable-next-line import/order
+import type { IMonacoThemeConverter, ThemeOptions } from './types'
 
 // eslint-disable-next-line import/order
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
-export * from '@/types'
+export * from './types'
 
 export default class MonacoThemeConverter {
   constructor(props: IMonacoThemeConverter) {

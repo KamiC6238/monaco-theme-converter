@@ -9,10 +9,16 @@
     "type": "git",
     "url": "https://github.com/KamiC6238/monaco-theme-converter"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "files": [
     "README.md",
-    "dist",
-    "package.json"
+    "dist"
   ],
   "scripts": {
     "dev": "vite",
@@ -69,6 +75,7 @@
     "eslint": "^8.50.0",
     "monaco-editor": "0.34.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.0"
   }
 }

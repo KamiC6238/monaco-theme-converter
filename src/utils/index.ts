@@ -1,5 +1,7 @@
 import { themeFix } from '@/config'
-import type { BaseTheme, ThemeConfig } from '@/types'
+
+// eslint-disable-next-line import/order
+import type { BaseTheme, ThemeConfig } from '../types'
 
 export function makeThemePath(theme: string, needDot = true) {
   return `${needDot ? '.' : ''}/themes/${theme}.json`

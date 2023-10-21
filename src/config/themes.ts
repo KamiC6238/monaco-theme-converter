@@ -1,5 +1,7 @@
-import type { ThemeConfig, ThemeFix, Themes } from '@/types'
 import { makeThemeConfig } from '@/utils'
+
+// eslint-disable-next-line import/order
+import type { ThemeConfig, ThemeFix, Themes } from '../types'
 
 export const themes: Themes = {
   VSDark: {
