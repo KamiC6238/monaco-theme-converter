@@ -1,45 +1,55 @@
-import { init, setResourcePath } from '@/core'
-import type { IMonacoThemeConverter, IThemes } from '@/types'
+import { convert, setResourcePrefix } from '@/core'
+import type { IMonacoThemeConverter, ThemeOptions } from '@/types'
 import { makeTheme } from '@/utils'
 
 // eslint-disable-next-line import/order
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
-// eslint-disable-next-line import/order
-// import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+export * from '@/types'
 
 export default class MonacoThemeConverter {
-  private editor: monaco.editor.IStandaloneCodeEditor | null = null
-
   constructor(props: IMonacoThemeConverter) {
-    const { editor, domain, path = '/', protocol = 'https' } = props
-    this.editor = editor
+    const { domain, path = '/', protocol = 'https' } = props
 
-    setResourcePath(`${protocol}://${domain}${path}`)
+    if (!domain)
+      throw new Error('please provide domain!')
+
+    if (typeof domain !== 'string')
+      throw new TypeError('domain is not a string!')
+
+    if (protocol !== 'http' && protocol !== 'https')
+      throw new Error('protocol must be http or https!')
+
+    const resourcePrefix = `${protocol}://${domain}${path}`
+
+    setResourcePrefix(resourcePrefix)
+    convert()
   }
 
-  setTheme(theme: keyof IThemes) {
-    if (!this.editor)
+  setTheme(editor: monaco.editor.IStandaloneCodeEditor, options: ThemeOptions = {}) {
+    if (!editor)
       return
 
-    this.editor.updateOptions({
+    const { theme = 'VSDark' } = options
+
+    editor.updateOptions({
       theme: makeTheme(theme),
     })
   }
 }
 
-setResourcePath(`http://localhost:5173/resources`)
-init()
-
-const editor = monaco.editor.create(document.getElementById('app')!, {
-  language: 'java',
-  value: 'class Test {}',
-})
-
 const converter = new MonacoThemeConverter({
-  editor,
-  domain: 'localhost:5173',
+  domain: 'danzzzz.netlify.app',
   path: '/resources',
 })
 
-converter.setTheme('VSDark')
+const editor = monaco.editor.create(document.getElementById('app')!, {
+  language: 'javascript',
+  value: 'class Test {}',
+  automaticLayout: true,
+  minimap: {
+    enabled: false,
+  },
+})
+
+converter.setTheme(editor)

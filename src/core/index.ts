@@ -9,9 +9,9 @@ import getThemeServiceOverride, { setDefaultThemes } from 'vscode/service-overri
 import { StandaloneServices } from 'vscode/services'
 
 import {
+  ThemeConfigList,
   grammars,
   languages,
-  themeConfigList,
   themes,
 } from '@/config'
 
@@ -28,11 +28,11 @@ type ThemeLoader = Record<string, () => Promise<string>>
 
 let resourcePrefix = ''
 
-export function setResourcePath(prefix: string) {
+export function setResourcePrefix(prefix: string) {
   resourcePrefix = prefix
 }
 
-export function init() {
+export function convert() {
   StandaloneServices.initialize({
     // remove dialog override service will occur server circle error
     ...getDialogsServiceOverride(),
@@ -46,14 +46,14 @@ export function init() {
     ...getLanguagesServiceOverride(),
   })
 
-  const themeLoader = Object.values(themes).reduce((res, cur) => {
-    const importPath = makeThemeImportPath(resourcePrefix, cur)
-    res[makeThemePath(cur, false)] = async () => (await import(importPath)).default
+  const themeLoader = Object.values(themes).reduce((res, { notActuallyUsed }) => {
+    const importPath = makeThemeImportPath(resourcePrefix, notActuallyUsed)
+    res[makeThemePath(notActuallyUsed, false)] = async () => await fetchJSON(importPath)
     return res
   }, {} as ThemeLoader)
 
   setDefaultThemes(
-    themeConfigList as IThemeExtensionPoint[],
+    ThemeConfigList as IThemeExtensionPoint[],
     async theme => themeLoader![theme.path.slice(1)]!(),
   )
 
@@ -63,12 +63,11 @@ export function init() {
     const path = makeConfigPath(id, false)
     const importPath = makeConfigImportPath(resourcePrefix, id)
 
-    setLanguageConfiguration(path, async () => (await import(importPath)).default)
+    setLanguageConfiguration(path, async () => await fetchJSON(importPath))
   })
 
   setGrammars(grammars, async ({ language }) => {
     const importPath = makeGrammarImportPath(resourcePrefix, language)
-    await fetchJSON(importPath)
-    return (await import(importPath)).default
+    return await fetchJSON(importPath)
   })
 }

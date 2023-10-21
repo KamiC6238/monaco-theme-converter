@@ -1,12 +1,42 @@
-import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-
 export interface IThemes {
+  /** @description vs-dark theme (Dark) */
   VSDark: string
+  /** @description vs theme (Light) */
   VS: string
+  /** @description Ariake Dark theme */
+  AriakeDark: string
+}
+
+export type BaseTheme = 'vs-dark' | 'vs'
+
+export interface Themes {
+  [theme: string]: {
+    actuallyUsed: string
+    notActuallyUsed: string
+    base: BaseTheme
+  }
+}
+
+export interface ThemeFix {
+  [theme: string]: {
+    baseTheme: BaseTheme
+    notActuallyUsed: string
+  }
+}
+
+export interface ThemeConfig {
+  id: string
+  label: string
+  uiTheme: BaseTheme
+  extension: string
+  path: string
+}
+
+export interface ThemeOptions {
+  theme?: keyof IThemes
 }
 
 export interface IMonacoThemeConverter {
-  editor: monaco.editor.IStandaloneCodeEditor
   /**
    * @description The domain used for resources of languages or themes.
    * @example static.kobayashi.com

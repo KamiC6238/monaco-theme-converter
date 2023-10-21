@@ -1,5 +1,5 @@
 import { themeFix } from '@/config'
-import type { IThemes } from '@/types'
+import type { BaseTheme, ThemeConfig } from '@/types'
 
 export function makeThemePath(theme: string, needDot = true) {
   return `${needDot ? '.' : ''}/themes/${theme}.json`
@@ -25,13 +25,23 @@ export function makeThemeImportPath(resourcePrefix: string, theme: string) {
   return `${resourcePrefix}/themes/theme-defaults~${theme}.json`
 }
 
-export function makeTheme(theme: keyof IThemes) {
-  const { prefix, suffix } = themeFix[theme]
+export function makeTheme(theme: string) {
+  const { baseTheme, notActuallyUsed } = themeFix[theme]
 
-  return `${prefix} vscode-theme-defaults-themes-${suffix}-json`
+  return `${baseTheme} vscode-theme-defaults-themes-${notActuallyUsed}-json`
+}
+
+export function makeThemeConfig(base: BaseTheme, theme: string): ThemeConfig {
+  return {
+    id: base === 'vs-dark' ? 'Default Dark+' : 'Default Light+',
+    label: base === 'vs-dark' ? 'Dark+ (default dark)' : 'Light+ (default light)',
+    uiTheme: base,
+    extension: 'theme-defaults',
+    path: makeThemePath(theme),
+  }
 }
 
 export async function fetchJSON(url: string) {
   const result = await fetch(url)
-  return await result.json()
+  return JSON.stringify(await result.json())
 }
