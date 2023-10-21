@@ -2,7 +2,6 @@
   "name": "monaco-theme-converter",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
   "description": "A library for support breakpoints in monaco-editor.",
   "license": "MIT",
   "repository": {
