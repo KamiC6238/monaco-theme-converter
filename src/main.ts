@@ -1,5 +1,5 @@
-import { convert, setResourcePrefix } from '@/core'
-import { makeTheme } from '@/utils'
+import { convert, setResourcePrefix } from './core'
+import { makeTheme } from './utils'
 
 // eslint-disable-next-line import/order
 import type { IMonacoThemeConverter, ThemeOptions } from './types'

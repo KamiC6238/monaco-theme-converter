@@ -13,7 +13,7 @@ import {
   grammars,
   languages,
   themes,
-} from '@/config'
+} from '../config'
 
 import {
   fetchJSON,
@@ -22,7 +22,7 @@ import {
   makeGrammarImportPath,
   makeThemeImportPath,
   makeThemePath,
-} from '@/utils'
+} from '../utils'
 
 type ThemeLoader = Record<string, () => Promise<string>>
 

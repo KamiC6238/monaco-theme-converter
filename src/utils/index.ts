@@ -1,4 +1,4 @@
-import { themeFix } from '@/config'
+import { themeFix } from '../config'
 
 // eslint-disable-next-line import/order
 import type { BaseTheme, ThemeConfig } from '../types'

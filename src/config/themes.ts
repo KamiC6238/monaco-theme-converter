@@ -1,4 +1,4 @@
-import { makeThemeConfig } from '@/utils'
+import { makeThemeConfig } from '../utils'
 
 // eslint-disable-next-line import/order
 import type { ThemeConfig, ThemeFix, Themes } from '../types'
