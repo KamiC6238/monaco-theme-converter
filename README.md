@@ -1,16 +1,16 @@
 # monaco-theme-converter
 An easy way to use vscode theme in monaco-editor.
 
-# Supported Language & Theme
-## Language
+## Supported Language & Theme
+### Language
 - Java
 - JavaScript
-## Theme
+### Theme
 - VS Dark
 - VS
 - Ariake Dark
 
-# Usage
+## Usage
 ```javascript
 import MonacoThemeConverter from 'monaco-theme-converter'
 
