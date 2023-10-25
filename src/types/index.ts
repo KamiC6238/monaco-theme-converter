@@ -1,3 +1,5 @@
+import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+
 export interface IThemes {
   /** @description vs-dark theme (Dark) */
   VSDark: string
@@ -36,7 +38,7 @@ export interface ThemeOptions {
   theme?: keyof IThemes
 }
 
-export interface IMonacoThemeConverter {
+export interface ConverterOptions {
   /**
    * @description The domain used for resources of languages or themes.
    * @example static.kobayashi.com
@@ -57,4 +59,10 @@ export interface IMonacoThemeConverter {
    * @description protocol, default is https
    */
   protocol?: string
+}
+
+export interface ICreateMonacoThemeConverterEditor {
+  element: HTMLElement
+  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions
+  converterOptions: ConverterOptions
 }

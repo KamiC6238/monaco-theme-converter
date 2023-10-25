@@ -2,40 +2,44 @@ import { convert, setResourcePrefix } from './core'
 import { makeTheme } from './utils'
 
 // eslint-disable-next-line import/order
-import type { IMonacoThemeConverter, ThemeOptions } from './types'
+import type { ConverterOptions, IThemes } from './types'
 
 // eslint-disable-next-line import/order
-import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 export * from './types'
 
-export default class MonacoThemeConverter {
-  constructor(props: IMonacoThemeConverter) {
-    const { domain, path = '/', protocol = 'https' } = props
+export default function createEditor(
+  element: HTMLElement,
+  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions,
+  converterOptions: ConverterOptions,
+) {
+  const { domain, path = '/', protocol = 'https' } = converterOptions
 
-    if (!domain)
-      throw new Error('please provide domain!')
+  if (!domain)
+    throw new Error('please provide domain!')
 
-    if (typeof domain !== 'string')
-      throw new TypeError('domain is not a string!')
+  if (typeof domain !== 'string')
+    throw new TypeError('domain is not a string!')
 
-    if (protocol !== 'http' && protocol !== 'https')
-      throw new Error('protocol must be http or https!')
+  if (protocol !== 'http' && protocol !== 'https')
+    throw new Error('protocol must be http or https!')
 
-    const resourcePrefix = `${protocol}://${domain}${path}`
+  const resourcePrefix = `${protocol}://${domain}${path}`
 
-    setResourcePrefix(resourcePrefix)
-    convert()
-  }
+  setResourcePrefix(resourcePrefix)
+  convert()
 
-  setTheme(editor: monaco.editor.IStandaloneCodeEditor, options: ThemeOptions = {}) {
-    if (!editor)
-      return
+  const editor = monaco.editor.create(element, editorOptions)
 
-    const { theme = 'VSDark' } = options
-
+  const setTheme = (theme: keyof IThemes) => {
     editor.updateOptions({
       theme: makeTheme(theme),
     })
+  }
+
+  return {
+    setTheme,
+    editor,
   }
 }

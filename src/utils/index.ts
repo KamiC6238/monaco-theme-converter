@@ -1,7 +1,7 @@
 import { themeFix } from '../config'
 
 // eslint-disable-next-line import/order
-import type { BaseTheme, ThemeConfig } from '../types'
+import type { BaseTheme, IThemes, ThemeConfig } from '../types'
 
 export function makeThemePath(theme: string, needDot = true) {
   return `${needDot ? '.' : ''}/themes/${theme}.json`
@@ -27,7 +27,7 @@ export function makeThemeImportPath(resourcePrefix: string, theme: string) {
   return `${resourcePrefix}/themes/theme-defaults~${theme}.json`
 }
 
-export function makeTheme(theme: string) {
+export function makeTheme(theme: keyof IThemes) {
   const { baseTheme, notActuallyUsed } = themeFix[theme]
 
   return `${baseTheme} vscode-theme-defaults-themes-${notActuallyUsed}-json`
