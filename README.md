@@ -49,4 +49,5 @@ const { editor, setTheme } = createEditor(
 
 setTheme('VSDark')
 ```
-
+## Credits
+[monaco-vscode-api](https://github.com/CodinGame/monaco-vscode-api) - VSCode public API plugged on the monaco editor
