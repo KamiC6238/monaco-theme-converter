@@ -37,6 +37,9 @@ const { editor, setTheme } = createEditor(
     language: 'javascript',
     value: 'function foo() {}',
     automaticLayout: true,
+    // rewrite types of theme that you can use to set default vscode theme
+    // 'VSDark' | 'VS' | 'AriakeDark'
+    theme: 'VSDark',
     minimap: {
       enabled: false,
     },
@@ -47,6 +50,7 @@ const { editor, setTheme } = createEditor(
   },
 )
 
+// or use setTheme API
 setTheme('VSDark')
 ```
 ## Credits
