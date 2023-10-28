@@ -3,7 +3,7 @@ import createEditor from './main'
 createEditor(
   document.getElementById('app')!,
   {
-    language: 'css',
+    language: 'php',
     value: 'class Test {}',
     automaticLayout: true,
     theme: 'AriakeDark',

@@ -367,4 +367,28 @@ export default [
     path: './css.tmLanguage.json',
     configuration: './css.tmLanguage.json',
   },
+  {
+    language: 'csharp',
+    scopeName: 'source.cs',
+    path: './csharp.tmLanguage.json',
+    configuration: './csharp.tmLanguage.json',
+  },
+  {
+    language: 'rust',
+    scopeName: 'source.rust',
+    path: './rust.tmLanguage.json',
+    configuration: './rust.tmLanguage.json',
+  },
+  {
+    language: 'json',
+    scopeName: 'source.json',
+    path: './json.tmLanguage.json',
+    configuration: './json.tmLanguage.json',
+  },
+  {
+    language: 'php',
+    scopeName: 'source.php',
+    path: './php.tmLanguage.json',
+    configuration: './php.tmLanguage.json',
+  },
 ]
