@@ -44,6 +44,11 @@ const { editor, setTheme } = createEditor(
       enabled: false,
     },
   },
+  // You need to upload the resources to your services
+  // example:
+  // https://danzzzz.netlify.app/resources/java/java.configuration.json
+  // https://danzzzz.netlify.app/resources/java/java.tmLanguage.json
+  // https://danzzzz.netlify.app/resources/themes/theme-defaults~dark_plus.json
   {
     domain: 'danzzzz.netlify.app',
     path: '/resources',
