@@ -1,5 +1,7 @@
 import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
+export type ThemeLoader = Record<string, () => Promise<string>>
+
 export interface IThemes {
   /** @description vs-dark theme (Dark) */
   VSDark: string
@@ -8,6 +10,8 @@ export interface IThemes {
   /** @description Ariake Dark theme */
   AriakeDark: string
 }
+
+export type ThemesEnum = keyof IThemes
 
 export type BaseTheme = 'vs-dark' | 'vs'
 
@@ -35,7 +39,7 @@ export interface ThemeConfig {
 }
 
 export interface ThemeOptions {
-  theme?: keyof IThemes
+  theme?: ThemesEnum
 }
 
 export interface ConverterOptions {

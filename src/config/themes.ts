@@ -1,7 +1,5 @@
-import { makeThemeConfig } from '../utils'
-
-// eslint-disable-next-line import/order
 import type { ThemeConfig, ThemeFix, Themes } from '../types'
+import { makeThemeConfigList, makeThemeFix } from '../utils'
 
 export const themes: Themes = {
   VSDark: {
@@ -31,16 +29,5 @@ export const themes: Themes = {
   },
 }
 
-export const themeFix: ThemeFix = Object.keys(themes).reduce((res, cur) => {
-  res[cur] = {
-    baseTheme: themes[cur].base,
-    notActuallyUsed: themes[cur].notActuallyUsed,
-  }
-  return res
-}, {} as ThemeFix)
-
-export const ThemeConfigList: ThemeConfig[] = Object.keys(themes).reduce((res, cur) => {
-  const { base, notActuallyUsed } = themes[cur]
-  res.push(makeThemeConfig(base, notActuallyUsed))
-  return res
-}, [] as ThemeConfig[])
+export const themeFix: ThemeFix = makeThemeFix(themes)
+export const themeConfigList: ThemeConfig[] = makeThemeConfigList(themes)
