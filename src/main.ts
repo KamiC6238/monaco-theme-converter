@@ -1,45 +1,35 @@
-import { convert, setResourcePrefix } from './core'
-import { makeTheme } from './utils'
-
-// eslint-disable-next-line import/order
-import type { ConverterOptions, IThemes } from './types'
-
-// eslint-disable-next-line import/order
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { convert, setResourcePrefix } from './core'
+import type { ConverterOptions, ThemesEnum } from './types'
+import { assertConverterOptions, makeResourcePrefix, makeTheme } from './utils'
 
 export * from './types'
 
 export default function createEditor(
   element: HTMLElement,
-  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions,
+  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions & {
+    theme?: ThemesEnum
+  },
   converterOptions: ConverterOptions,
 ) {
-  const { domain, path = '/', protocol = 'https' } = converterOptions
+  assertConverterOptions(converterOptions)
 
-  if (!domain)
-    throw new Error('please provide domain!')
-
-  if (typeof domain !== 'string')
-    throw new TypeError('domain is not a string!')
-
-  if (protocol !== 'http' && protocol !== 'https')
-    throw new Error('protocol must be http or https!')
-
-  const resourcePrefix = `${protocol}://${domain}${path}`
+  const resourcePrefix = makeResourcePrefix(converterOptions)
+  const defaultTheme = editorOptions?.theme ?? 'VSDark'
 
   setResourcePrefix(resourcePrefix)
   convert()
 
-  const editor = monaco.editor.create(element, editorOptions)
+  const editor = monaco.editor.create(element, {
+    ...editorOptions,
+    theme: makeTheme(defaultTheme),
+  })
 
-  const setTheme = (theme: keyof IThemes) => {
+  const setTheme = (theme: ThemesEnum) => {
     editor.updateOptions({
       theme: makeTheme(theme),
     })
   }
 
-  return {
-    setTheme,
-    editor,
-  }
+  return { editor, setTheme }
 }

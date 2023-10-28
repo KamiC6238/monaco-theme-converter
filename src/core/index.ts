@@ -9,9 +9,9 @@ import getThemeServiceOverride, { setDefaultThemes } from 'vscode/service-overri
 import { StandaloneServices } from 'vscode/services'
 
 import {
-  ThemeConfigList,
   grammars,
   languages,
+  themeConfigList,
   themes,
 } from '../config'
 
@@ -20,11 +20,8 @@ import {
   makeConfigImportPath,
   makeConfigPath,
   makeGrammarImportPath,
-  makeThemeImportPath,
-  makeThemePath,
+  makeThemeLoader,
 } from '../utils'
-
-type ThemeLoader = Record<string, () => Promise<string>>
 
 let resourcePrefix = ''
 
@@ -46,14 +43,10 @@ export function convert() {
     ...getLanguagesServiceOverride(),
   })
 
-  const themeLoader = Object.values(themes).reduce((res, { notActuallyUsed }) => {
-    const importPath = makeThemeImportPath(resourcePrefix, notActuallyUsed)
-    res[makeThemePath(notActuallyUsed, false)] = async () => await fetchJSON(importPath)
-    return res
-  }, {} as ThemeLoader)
+  const themeLoader = makeThemeLoader(themes, resourcePrefix)
 
   setDefaultThemes(
-    ThemeConfigList as IThemeExtensionPoint[],
+    themeConfigList as IThemeExtensionPoint[],
     async theme => themeLoader![theme.path.slice(1)]!(),
   )
 
