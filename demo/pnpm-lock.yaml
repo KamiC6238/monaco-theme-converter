@@ -5,8 +5,8 @@ devDependencies:
     specifier: 0.34.0
     version: 0.34.0
   monaco-theme-converter:
-    specifier: ^0.0.3
-    version: 0.0.3(monaco-editor@0.34.0)
+    specifier: ^0.0.4
+    version: 0.0.4(monaco-editor@0.34.0)
   typescript:
     specifier: ^5.0.2
     version: 5.2.2
@@ -268,8 +268,8 @@ packages:
     resolution: {integrity: sha512-VF+S5zG8wxfinLKLrWcl4WUizMx+LeJrG4PM/M78OhcwocpV0jiyhX/pG6Q9jIOhrb/ckYi6nHnaR5OojlOZCQ==}
     dev: true
 
-  /monaco-theme-converter@0.0.3(monaco-editor@0.34.0):
-    resolution: {integrity: sha512-Beha3TDKL9fDuolDLszmlkmZzktKE5s0SVQgxoEbl4lEjjJs37XzNHGUQPiyvi0zyh1JyBJ7WkGOyskToL8HNw==}
+  /monaco-theme-converter@0.0.4(monaco-editor@0.34.0):
+    resolution: {integrity: sha512-Oya0oBmgVoeeH22r5Jkycc/G4rNqa1QeMKAWWlln7KUF6ayd1C8y+x1gcERE9IeiZ3I5J9ZqzHiPVgiW8vu8bw==}
     peerDependencies:
       monaco-editor: ~0.34.0
     dependencies:

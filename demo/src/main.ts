@@ -1,10 +1,12 @@
+import 'monaco-editor/esm/vs/editor/editor.api'
 import createEditor from 'monaco-theme-converter'
 
-const { setTheme } = createEditor(
+createEditor(
   document.getElementById('app')!,
   {
     language: 'javascript',
     value: 'class Test {}',
+    theme: 'AriakeDark',
     automaticLayout: true,
     minimap: {
       enabled: false,
@@ -15,5 +17,3 @@ const { setTheme } = createEditor(
     path: '/resources',
   },
 )
-
-setTheme('VSDark')
