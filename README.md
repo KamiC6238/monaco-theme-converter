@@ -3,11 +3,22 @@ An easy way to use vscode theme in monaco-editor.
 
 ## Supported Language & Theme
 ### Language
+- C
+- Go
+- C#
+- C++
+- CSS
+- PHP
 - Java
+- Rust
+- JSON
+- HTML
+- Python
 - JavaScript
+- TypeScript
 ### Theme
-- VS Dark
 - VS
+- VS Dark
 - Ariake Dark
 
 ## Usage
