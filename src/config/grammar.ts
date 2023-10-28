@@ -355,4 +355,16 @@ export default [
     path: './typescript-basics.tmLanguage.json',
     configuration: './typescript-basics.tmLanguage.json',
   },
+  {
+    language: 'html',
+    scopeName: 'text.html.basic',
+    path: './html.tmLanguage.json',
+    configuration: './html.tmLanguage.json',
+  },
+  {
+    language: 'css',
+    scopeName: 'source.css',
+    path: './css.tmLanguage.json',
+    configuration: './css.tmLanguage.json',
+  },
 ]
