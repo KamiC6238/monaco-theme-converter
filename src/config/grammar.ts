@@ -349,4 +349,10 @@ export default [
     path: './python.tmLanguage.json',
     configuration: './python.tmLanguage.json',
   },
+  {
+    language: 'typescript',
+    scopeName: 'source.ts',
+    path: './typescript-basics.tmLanguage.json',
+    configuration: './typescript-basics.tmLanguage.json',
+  },
 ]

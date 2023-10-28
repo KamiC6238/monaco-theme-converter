@@ -700,4 +700,11 @@ export default [
     configuration: './python-configuration.json',
     path: './python-configuration.json',
   },
+  {
+    id: 'typescript',
+    aliases: ['TypeScript', 'ts', 'typescript'],
+    extensions: ['.ts', '.cts', '.mts'],
+    configuration: './typescript-configuration.json',
+    path: './typescript-configuration.json',
+  },
 ]
