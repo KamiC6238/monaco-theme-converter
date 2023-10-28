@@ -3,7 +3,7 @@ import createEditor from './main'
 createEditor(
   document.getElementById('app')!,
   {
-    language: 'javascript',
+    language: 'python',
     value: 'class Test {}',
     automaticLayout: true,
     theme: 'AriakeDark',

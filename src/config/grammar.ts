@@ -325,4 +325,28 @@ export default [
     scopeName: 'source.js',
     path: './javascript.tmLanguage.json',
   },
+  {
+    language: 'c',
+    scopeName: 'source.c',
+    path: './c.tmLanguage.json',
+    configuration: './c.tmLanguage.json',
+  },
+  {
+    language: 'cpp',
+    scopeName: 'source.cpp',
+    path: './cpp.tmLanguage.json',
+    configuration: './cpp.tmLanguage.json',
+  },
+  {
+    language: 'go',
+    scopeName: 'source.go',
+    path: './go.tmLanguage.json',
+    configuration: './go.tmLanguage.json',
+  },
+  {
+    language: 'python',
+    scopeName: 'source.python',
+    path: './python.tmLanguage.json',
+    configuration: './python.tmLanguage.json',
+  },
 ]
