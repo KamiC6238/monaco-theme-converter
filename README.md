@@ -19,7 +19,9 @@ An easy way to use vscode theme in monaco-editor.
 ### Theme
 - VS
 - VS Dark
+- Moonlight
 - Ariake Dark
+- Vitesse Dark
 
 ## Usage
 ### Before
