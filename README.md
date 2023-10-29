@@ -1,5 +1,5 @@
 # monaco-theme-converter
-An easy way to use vscode theme in monaco-editor.
+An easy way to use vscode theme in monaco-editor based on [monaco-vscode-api](https://github.com/CodinGame/monaco-vscode-api).
 
 ## Supported Language & Theme
 ### Language
@@ -71,5 +71,3 @@ const { editor, setTheme } = createEditor(
 // or use setTheme API
 setTheme('VSDark')
 ```
-## Credits
-[monaco-vscode-api](https://github.com/CodinGame/monaco-vscode-api) - VSCode public API plugged on the monaco editor
