@@ -9,6 +9,10 @@ export interface IThemes {
   VS: string
   /** @description Ariake Dark theme */
   AriakeDark: string
+  /** @description Vitesse Dark theme */
+  VitesseDark: string
+  /** @description moonlight II Italic theme */
+  Moonlight: string
 }
 
 export type ThemesEnum = keyof IThemes

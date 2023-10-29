@@ -27,6 +27,16 @@ export const themes: Themes = {
     notActuallyUsed: 'ariake_dark',
     base: 'vs-dark',
   },
+  VitesseDark: {
+    actuallyUsed: 'vitesse_dark',
+    notActuallyUsed: 'vitesse_dark',
+    base: 'vs-dark',
+  },
+  Moonlight: {
+    actuallyUsed: 'moonlight',
+    notActuallyUsed: 'moonlight',
+    base: 'vs-dark',
+  },
 }
 
 export const themeFix: ThemeFix = makeThemeFix(themes)

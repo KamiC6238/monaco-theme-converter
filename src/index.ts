@@ -3,10 +3,10 @@ import createEditor from './main'
 createEditor(
   document.getElementById('app')!,
   {
-    language: 'php',
+    language: 'javascript',
     value: 'class Test {}',
     automaticLayout: true,
-    theme: 'AriakeDark',
+    theme: 'VitesseDark',
     minimap: {
       enabled: false,
     },
