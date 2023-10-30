@@ -1,5 +1,5 @@
 import { themeFix } from '../config'
-import type { BaseTheme, ConverterOptions, ThemeConfig, ThemeFix, ThemeLoader, Themes, ThemesEnum } from '../types'
+import type { BaseTheme, ExtraOptions, ThemeConfig, ThemeFix, ThemeLoader, Themes, ThemesEnum } from '../types'
 
 export function makeThemePath(theme: string, needDot = true) {
   return `${needDot ? '.' : ''}/themes/${theme}.json`
@@ -67,13 +67,13 @@ export function makeThemeLoader(themes: Themes, resourcePrefix: string) {
   }, {} as ThemeLoader)
 }
 
-export function makeResourcePrefix(converterOptions: ConverterOptions) {
-  const { domain, path = '/', protocol = 'https' } = converterOptions
+export function makeResourcePrefix(extraOptions: ExtraOptions) {
+  const { domain, path = '/', protocol = 'https' } = extraOptions
   return `${protocol}://${domain}${path}`
 }
 
-export function assertConverterOptions(converterOptions: ConverterOptions) {
-  const { domain, path = '/', protocol = 'https' } = converterOptions
+export function assertExtraOptions(extraOptions: ExtraOptions) {
+  const { domain, path = '/', protocol = 'https' } = extraOptions
 
   if (!domain)
     throw new Error('please provide domain!')

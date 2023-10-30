@@ -46,7 +46,11 @@ export interface ThemeOptions {
   theme?: ThemesEnum
 }
 
-export interface ConverterOptions {
+export type EditorOptions = monaco.editor.IStandaloneEditorConstructionOptions & {
+  theme?: ThemesEnum
+}
+
+export interface ExtraOptions {
   /**
    * @description The domain used for resources of languages or themes.
    * @example static.kobayashi.com
@@ -67,10 +71,4 @@ export interface ConverterOptions {
    * @description protocol, default is https
    */
   protocol?: string
-}
-
-export interface ICreateMonacoThemeConverterEditor {
-  element: HTMLElement
-  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions
-  converterOptions: ConverterOptions
 }

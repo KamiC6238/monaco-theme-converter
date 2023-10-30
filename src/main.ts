@@ -1,20 +1,18 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import { convert, setResourcePrefix } from './core'
-import type { ConverterOptions, ThemesEnum } from './types'
-import { assertConverterOptions, makeResourcePrefix, makeTheme } from './utils'
+import type { EditorOptions, ExtraOptions, ThemesEnum } from './types'
+import { assertExtraOptions, makeResourcePrefix, makeTheme } from './utils'
 
 export * from './types'
 
 export default function createEditor(
   element: HTMLElement,
-  editorOptions: monaco.editor.IStandaloneEditorConstructionOptions & {
-    theme?: ThemesEnum
-  },
-  converterOptions: ConverterOptions,
+  editorOptions: EditorOptions,
+  extraOptions: ExtraOptions,
 ) {
-  assertConverterOptions(converterOptions)
+  assertExtraOptions(extraOptions)
 
-  const resourcePrefix = makeResourcePrefix(converterOptions)
+  const resourcePrefix = makeResourcePrefix(extraOptions)
   const defaultTheme = editorOptions?.theme ?? 'VSDark'
 
   setResourcePrefix(resourcePrefix)
