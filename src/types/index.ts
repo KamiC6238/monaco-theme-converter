@@ -71,4 +71,22 @@ export interface ExtraOptions {
    * @description protocol, default is https
    */
   protocol?: string
+  /**
+   * @description
+   * - Additional themes
+   * - Please make sure that the corresponding theme resource name on your server is `${protocol}://${domain}${path}/themes/theme-defaults~${theme}.json`
+   *
+   * @example
+   * - themes: [{ baseTheme: 'vs-dark', theme: 'atom_one_dark' }]
+   * - equals: `${protocol}://${domain}${path}/themes/theme-defaults~atom_one_dark.json`
+   */
+  themes?: Array<{
+    /**
+     * - vs-dark means dark theme
+     * - vs means light theme
+     */
+    baseTheme: BaseTheme
+    /** theme name */
+    theme: string
+  }>
 }
