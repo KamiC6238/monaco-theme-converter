@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "monaco-editor": "0.34.0",
-    "monaco-theme-converter": "^0.0.5",
+    "monaco-theme-converter": "^0.0.6",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

@@ -13,6 +13,10 @@ export interface IThemes {
   VitesseDark: string
   /** @description moonlight II Italic theme */
   Moonlight: string
+  /** @description Atom one dark theme */
+  AtomOneDark: string
+  /** @description Atom one light theme */
+  AtomOneLight: string
 }
 
 export type ThemesEnum = keyof IThemes
