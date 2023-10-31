@@ -54,6 +54,22 @@ export type EditorOptions = monaco.editor.IStandaloneEditorConstructionOptions &
   theme?: ThemesEnum
 }
 
+export interface AdditionalTheme {
+  /**
+   * - vs-dark means dark theme
+   * - vs means light theme
+   */
+  baseTheme: BaseTheme
+  /** filename of theme in your server */
+  filename: string
+  /** theme name */
+  theme: string
+}
+
+export interface Convert {
+  additionalThemes: AdditionalTheme[]
+}
+
 export interface ExtraOptions {
   /**
    * @description The domain used for resources of languages or themes.
@@ -78,19 +94,12 @@ export interface ExtraOptions {
   /**
    * @description
    * - Additional themes
-   * - Please make sure that the corresponding theme resource name on your server is `${protocol}://${domain}${path}/themes/theme-defaults~${theme}.json`
+   * - Please make sure that the corresponding theme resource name on your server is `${protocol}://${domain}${path}/themes/theme-defaults~${filename}.json`
    *
    * @example
-   * - themes: [{ baseTheme: 'vs-dark', theme: 'atom_one_dark' }]
+   * - themes: [{ baseTheme: 'vs-dark', filename: 'atom_one_dark', theme: 'AtomOneDark' }]
    * - equals: `${protocol}://${domain}${path}/themes/theme-defaults~atom_one_dark.json`
+   * - usage: setTheme('AtomOneDark')
    */
-  themes?: Array<{
-    /**
-     * - vs-dark means dark theme
-     * - vs means light theme
-     */
-    baseTheme: BaseTheme
-    /** theme name */
-    theme: string
-  }>
+  themes?: AdditionalTheme[]
 }

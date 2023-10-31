@@ -1,7 +1,7 @@
-import type { ThemeConfig, ThemeFix, Themes } from '../types'
-import { makeThemeConfigList, makeThemeFix } from '../utils'
+import type { AdditionalTheme, Themes } from '../types'
+import { makeAdditionalThemes } from '../utils'
 
-export const themes: Themes = {
+const defaultTheme: Themes = {
   VSDark: {
     actuallyUsed: 'vs-dark',
     notActuallyUsed: 'dark_plus',
@@ -22,32 +22,37 @@ export const themes: Themes = {
     notActuallyUsed: 'light_vs',
     base: 'vs',
   },
-  AriakeDark: {
-    actuallyUsed: 'ariake_dark',
-    notActuallyUsed: 'ariake_dark',
-    base: 'vs-dark',
-  },
-  VitesseDark: {
-    actuallyUsed: 'vitesse_dark',
-    notActuallyUsed: 'vitesse_dark',
-    base: 'vs-dark',
-  },
-  Moonlight: {
-    actuallyUsed: 'moonlight',
-    notActuallyUsed: 'moonlight',
-    base: 'vs-dark',
-  },
-  AtomOneDark: {
-    actuallyUsed: 'atom_one_dark',
-    notActuallyUsed: 'atom_one_dark',
-    base: 'vs-dark',
-  },
-  AtomOneLight: {
-    actuallyUsed: 'atom_one_light',
-    notActuallyUsed: 'atom_one_light',
-    base: 'vs-dark',
-  },
 }
 
-export const themeFix: ThemeFix = makeThemeFix(themes)
-export const themeConfigList: ThemeConfig[] = makeThemeConfigList(themes)
+const additionalThemes: AdditionalTheme[] = [
+  {
+    baseTheme: 'vs-dark',
+    filename: 'ariake_dark',
+    theme: 'AriakeDark',
+  },
+  {
+    baseTheme: 'vs-dark',
+    filename: 'vitesse_dark',
+    theme: 'VitesseDark',
+  },
+  {
+    baseTheme: 'vs-dark',
+    filename: 'moonlight',
+    theme: 'Moonlight',
+  },
+  {
+    baseTheme: 'vs-dark',
+    filename: 'atom_one_dark',
+    theme: 'AtomOneDark',
+  },
+  {
+    baseTheme: 'vs-dark',
+    filename: 'atom_one_light',
+    theme: 'AtomOneLight',
+  },
+]
+
+export const themes: Themes = {
+  ...defaultTheme,
+  ...makeAdditionalThemes(additionalThemes),
+}

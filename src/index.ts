@@ -1,3 +1,4 @@
+import type { ThemesEnum } from './main'
 import createEditor from './main'
 
 createEditor(
@@ -6,7 +7,7 @@ createEditor(
     language: 'javascript',
     value: 'class Test {}',
     automaticLayout: true,
-    theme: 'AtomOneLight',
+    theme: 'Sakura' as ThemesEnum,
     minimap: {
       enabled: false,
     },
@@ -14,5 +15,12 @@ createEditor(
   {
     domain: 'danzzzz.netlify.app',
     path: '/resources',
+    themes: [
+      {
+        baseTheme: 'vs-dark',
+        filename: 'sakura',
+        theme: 'Sakura',
+      },
+    ],
   },
 )

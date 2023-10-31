@@ -11,17 +11,21 @@ import { StandaloneServices } from 'vscode/services'
 import {
   grammars,
   languages,
-  themeConfigList,
   themes,
 } from '../config'
 
 import {
   fetchJSON,
+  makeAdditionalThemes,
   makeConfigImportPath,
   makeConfigPath,
   makeGrammarImportPath,
+  makeThemeConfigList,
+  makeThemeFix,
   makeThemeLoader,
 } from '../utils'
+
+import type { Convert } from '../types'
 
 let resourcePrefix = ''
 
@@ -29,7 +33,9 @@ export function setResourcePrefix(prefix: string) {
   resourcePrefix = prefix
 }
 
-export function convert() {
+export function convert(params: Convert) {
+  const { additionalThemes } = params
+
   StandaloneServices.initialize({
     // remove dialog override service will occur server circle error
     ...getDialogsServiceOverride(),
@@ -43,10 +49,14 @@ export function convert() {
     ...getLanguagesServiceOverride(),
   })
 
-  const themeLoader = makeThemeLoader(themes, resourcePrefix)
+  const allThemes = {
+    ...themes,
+    ...makeAdditionalThemes(additionalThemes),
+  }
+  const themeLoader = makeThemeLoader(allThemes, resourcePrefix)
 
   setDefaultThemes(
-    themeConfigList as IThemeExtensionPoint[],
+    makeThemeConfigList(allThemes) as IThemeExtensionPoint[],
     async theme => themeLoader![theme.path.slice(1)]!(),
   )
 
@@ -63,4 +73,6 @@ export function convert() {
     const importPath = makeGrammarImportPath(resourcePrefix, language)
     return await fetchJSON(importPath)
   })
+
+  return { themeFix: makeThemeFix(allThemes) }
 }

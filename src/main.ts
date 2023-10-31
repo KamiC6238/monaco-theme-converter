@@ -14,18 +14,19 @@ export default function createEditor(
 
   const resourcePrefix = makeResourcePrefix(extraOptions)
   const defaultTheme = editorOptions?.theme ?? 'VSDark'
+  const additionalThemes = extraOptions?.themes ?? []
 
   setResourcePrefix(resourcePrefix)
-  convert()
+  const { themeFix } = convert({ additionalThemes })
 
   const editor = monaco.editor.create(element, {
     ...editorOptions,
-    theme: makeTheme(defaultTheme),
+    theme: makeTheme(defaultTheme as ThemesEnum, themeFix),
   })
 
   const setTheme = (theme: ThemesEnum) => {
     editor.updateOptions({
-      theme: makeTheme(theme),
+      theme: makeTheme(theme, themeFix),
     })
   }
 

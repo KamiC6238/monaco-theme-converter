@@ -1,5 +1,4 @@
-import { themeFix } from '../config'
-import type { BaseTheme, ExtraOptions, ThemeConfig, ThemeFix, ThemeLoader, Themes, ThemesEnum } from '../types'
+import type { AdditionalTheme, BaseTheme, ExtraOptions, ThemeConfig, ThemeFix, ThemeLoader, Themes, ThemesEnum } from '../types'
 
 export function makeThemePath(theme: string, needDot = true) {
   return `${needDot ? '.' : ''}/themes/${theme}.json`
@@ -25,7 +24,7 @@ export function makeThemeImportPath(resourcePrefix: string, theme: string) {
   return `${resourcePrefix}/themes/theme-defaults~${theme}.json`
 }
 
-export function makeTheme(theme: ThemesEnum) {
+export function makeTheme(theme: ThemesEnum, themeFix: ThemeFix) {
   const { baseTheme, notActuallyUsed } = themeFix[theme]
 
   return `${baseTheme} vscode-theme-defaults-themes-${notActuallyUsed}-json`
@@ -62,7 +61,9 @@ export function makeThemeConfigList(themes: Themes) {
 export function makeThemeLoader(themes: Themes, resourcePrefix: string) {
   return Object.values(themes).reduce((res, { notActuallyUsed }) => {
     const importPath = makeThemeImportPath(resourcePrefix, notActuallyUsed)
-    res[makeThemePath(notActuallyUsed, false)] = async () => await fetchJSON(importPath)
+    const themePath = makeThemePath(notActuallyUsed, false)
+
+    res[themePath] = async () => await fetchJSON(importPath)
     return res
   }, {} as ThemeLoader)
 }
@@ -91,4 +92,15 @@ export function assertExtraOptions(extraOptions: ExtraOptions) {
 export async function fetchJSON(url: string) {
   const result = await fetch(url)
   return JSON.stringify(await result.json())
+}
+
+export function makeAdditionalThemes(themes: AdditionalTheme[]) {
+  return themes.reduce((res, cur) => {
+    res[cur.theme] = {
+      base: cur.baseTheme,
+      actuallyUsed: cur.filename,
+      notActuallyUsed: cur.filename,
+    }
+    return res
+  }, {} as Themes)
 }
