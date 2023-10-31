@@ -37,6 +37,16 @@ export const themes: Themes = {
     notActuallyUsed: 'moonlight',
     base: 'vs-dark',
   },
+  AtomOneDark: {
+    actuallyUsed: 'atom_one_dark',
+    notActuallyUsed: 'atom_one_dark',
+    base: 'vs-dark',
+  },
+  AtomOneLight: {
+    actuallyUsed: 'atom_one_light',
+    notActuallyUsed: 'atom_one_light',
+    base: 'vs-dark',
+  },
 }
 
 export const themeFix: ThemeFix = makeThemeFix(themes)

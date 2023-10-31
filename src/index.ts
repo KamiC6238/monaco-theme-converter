@@ -6,7 +6,7 @@ createEditor(
     language: 'javascript',
     value: 'class Test {}',
     automaticLayout: true,
-    theme: 'VitesseDark',
+    theme: 'AtomOneLight',
     minimap: {
       enabled: false,
     },
