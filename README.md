@@ -22,6 +22,8 @@ An easy way to use vscode theme in monaco-editor based on [monaco-vscode-api](ht
 - Moonlight
 - Ariake Dark
 - Vitesse Dark
+- Atom One Dark
+- Atom One Light
 
 ## Usage
 ### Before
