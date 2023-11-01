@@ -93,7 +93,10 @@ Using the customized theme named in step3
 ```javascript
 const { setTheme } = createEditor(
   document.getElementById('app'),
-  {...},
+  {
+    // set customized theme as default theme
+    theme: 'CustomTheme'
+  },
   {
     domain: 'example.com',
     path: '/resources',
@@ -109,6 +112,9 @@ const { setTheme } = createEditor(
     ]
   }
 )
+
+// or using setTheme API
+// setTheme('CustomTheme')
 ```
-When you want to use your customized theme, you can use `setTheme('CustomTheme')`.
+When you want to use your customized theme, you can use `setTheme('CustomTheme')` or to set `CustomTheme` as default theme in the second parameter.
 
