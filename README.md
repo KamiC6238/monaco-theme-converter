@@ -90,12 +90,14 @@ After step1, you could see the current color settings, and remember to remove th
 Save the current color settings and name it like `theme-defaults~[themeName].json` and upload the file to your server like `https://example.com/resources/themes/theme-defaults~[themeName].json`
 #### Step4
 Using the customized theme named in step3
-```javascript
+```typescript
+import createEditor, { ThemesEnum } from 'monaco-theme-converter'
+
 const { setTheme } = createEditor(
   document.getElementById('app'),
   {
     // set customized theme as default theme
-    theme: 'CustomTheme'
+    theme: 'CustomTheme' as ThemesEnum
   },
   {
     domain: 'example.com',
@@ -114,7 +116,7 @@ const { setTheme } = createEditor(
 )
 
 // or using setTheme API
-// setTheme('CustomTheme')
+// setTheme('CustomTheme' as ThemesEnum)
 ```
 When you want to use your customized theme, you can use `setTheme('CustomTheme')` or to set `CustomTheme` as default theme in the second parameter.
 
