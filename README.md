@@ -43,7 +43,7 @@ const editor = monaco.editor.create(
   },
 )
 ```
-### After
+#### After
 In comparison to the native approach, apart from the distinction in calling the API to create an editor, there is another difference. `createEditor` supports the provision of a third parameter, which is used to specify the path for supplying language and theme resources. When you are using a specific language or theme, this library will fetch resources from the address you provided.
 
 ```javascript
@@ -76,3 +76,6 @@ In the above code, you can see that the domain is `danzzzz.netlify.app` and the 
   
 For theme resource
 - `https://danzzzz.netlify.app/resources/themes/theme-defaults~atom_one_dark.json`
+
+### Where are these resources?
+You can find tested resources in [here](https://github.com/KamiC6238/monaco-theme-converter/tree/main/resources), and you only need to upload the resources to your server, and when calling `createEditor`, pass in the server's `domain` name and resource `path`.
