@@ -79,3 +79,36 @@ For theme resource
 
 ### Where are these resources?
 You can find tested resources in [here](https://github.com/KamiC6238/monaco-theme-converter/tree/main/resources), and you only need to upload the resources to your server, and when calling `createEditor`, pass in the server's `domain` name and resource `path`.
+
+### How to use other theme that not included in this library?
+#### Step1
+Open your `Visual Studio Code`, use `Shift + command + p` shortcut to open the command panel, select `Developer: Generate Color Theme From Current Settings`
+<img width="524" alt="image" src="https://github.com/KamiC6238/monaco-theme-converter/assets/23523595/2e6a7c4d-6e46-437f-a053-7e6168ccf73e">
+#### Step2
+After step1, you could see the current color settings, and remember to remove the **comments**, <img width="510" alt="image" src="https://github.com/KamiC6238/monaco-theme-converter/assets/23523595/faf75a0a-5056-4857-9e5d-4297d6ba563f">
+#### Step3
+Save the current color settings and name it like `theme-defaults~[themeName].json` and upload the file to your server like `https://example.com/resources/themes/theme-defaults~[themeName].json`
+#### Step4
+Using the customized theme named in step3
+```javascript
+const { setTheme } = createEditor(
+  document.getElementById('app'),
+  {...},
+  {
+    domain: 'example.com',
+    path: '/resources',
+    themes: [
+      {
+        // theme file name on your server
+        filename: [themeName],
+        // Actually used when using setTheme
+        theme: 'CustomTheme',
+        baseTheme: 'vs-dark' | 'vs'
+      },
+      ...
+    ]
+  }
+)
+```
+When you want to use your customized theme, you can use `setTheme('CustomTheme')`.
+
