@@ -1,7 +1,7 @@
 {
   "name": "monaco-theme-converter",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An easy way to use vscode theme in monaco-editor.",
   "license": "MIT",
   "repository": {
