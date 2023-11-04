@@ -1,4 +1,3 @@
-import 'monaco-editor/esm/vs/editor/editor.api'
 import createEditor from 'monaco-theme-converter'
 
 createEditor(
