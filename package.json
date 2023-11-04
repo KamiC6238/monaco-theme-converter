@@ -1,7 +1,7 @@
 {
   "name": "monaco-theme-converter",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "An easy way to use vscode theme in monaco-editor.",
   "license": "MIT",
   "repository": {
@@ -75,6 +75,7 @@
     "monaco-editor": "0.34.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.6.0"
+    "vite-plugin-dts": "^3.6.0",
+    "vite-plugin-lib-css-injection": "^1.0.5"
   }
 }

@@ -135,6 +135,9 @@ devDependencies:
   vite-plugin-dts:
     specifier: ^3.6.0
     version: 3.6.0(@types/node@20.8.3)(typescript@5.0.2)(vite@4.4.5)
+  vite-plugin-lib-css-injection:
+    specifier: ^1.0.5
+    version: 1.0.5
 
 packages:
 
@@ -2984,6 +2987,10 @@ packages:
       - '@types/node'
       - rollup
       - supports-color
+    dev: true
+
+  /vite-plugin-lib-css-injection@1.0.5:
+    resolution: {integrity: sha512-TGlmDwDegcCINz/niKr9cwM3CwexyeE7VN2hV8XY3REJMjXgFiCFoRTIIdP7FiOYCVHrp0uHiziSFaYnafJAvA==}
     dev: true
 
   /vite@4.4.5(@types/node@20.8.3):

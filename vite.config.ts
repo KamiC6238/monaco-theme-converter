@@ -1,9 +1,10 @@
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import libCss from 'vite-plugin-lib-css-injection'
 
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [dts(), libCss()],
   resolve: {
     alias: [
       {
