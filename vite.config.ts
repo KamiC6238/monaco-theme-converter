@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/order
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
